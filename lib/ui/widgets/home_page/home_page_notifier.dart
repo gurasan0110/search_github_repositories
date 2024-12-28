@@ -1,4 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:search_github_repositories/data/repositories/repository_repository/repository_repository.dart';
 import 'package:search_github_repositories/logic/models/order.dart';
 import 'package:search_github_repositories/logic/models/sort.dart';
 import 'package:search_github_repositories/ui/widgets/home_page/home_page_state.dart';
@@ -14,15 +15,30 @@ class HomePageNotifier extends _$HomePageNotifier {
     return HomePageState();
   }
 
-  void setQ({required String q}) {
+  Future<void> setQ({required String q}) async {
     state = state.copyWith.queryParameters(q: q);
+    await _searchRepositories();
   }
 
-  void setSort({required Sort sort}) {
+  Future<void> setSort({required Sort sort}) async {
     state = state.copyWith.queryParameters(sort: sort);
+    await _searchRepositories();
   }
 
-  void setOrder({required Order order}) {
+  Future<void> setOrder({required Order order}) async {
     state = state.copyWith.queryParameters(order: order);
+    await _searchRepositories();
+  }
+
+  Future<void> _searchRepositories() async {
+    if (state.queryParameters.q.isEmpty) {
+      return;
+    }
+
+    final repositories = await ref
+        .watch(repositoryRepositoryProvider)
+        .searchRepositories(queryParameters: state.queryParameters);
+
+    state = state.copyWith(repositories: repositories);
   }
 }
