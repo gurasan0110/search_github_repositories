@@ -9,7 +9,7 @@ part 'search_repositories_query_parameters.g.dart';
 class SearchRepositoriesQueryParameters
     with _$SearchRepositoriesQueryParameters {
   const factory SearchRepositoriesQueryParameters({
-    required String q,
+    @Default('') String q,
     @Default(Sort.bestMatch) Sort sort,
     @Default(Order.desc) Order order,
     @Default(1) int page,

@@ -142,12 +142,13 @@ class __$$SearchRepositoriesQueryParametersImplCopyWithImpl<$Res>
 class _$SearchRepositoriesQueryParametersImpl
     implements _SearchRepositoriesQueryParameters {
   const _$SearchRepositoriesQueryParametersImpl(
-      {required this.q,
+      {this.q = '',
       this.sort = Sort.bestMatch,
       this.order = Order.desc,
       this.page = 1});
 
   @override
+  @JsonKey()
   final String q;
   @override
   @JsonKey()
@@ -200,7 +201,7 @@ class _$SearchRepositoriesQueryParametersImpl
 abstract class _SearchRepositoriesQueryParameters
     implements SearchRepositoriesQueryParameters {
   const factory _SearchRepositoriesQueryParameters(
-      {required final String q,
+      {final String q,
       final Sort sort,
       final Order order,
       final int page}) = _$SearchRepositoriesQueryParametersImpl;

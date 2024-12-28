@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:search_github_repositories/ui/widgets/home_page/widgets/home_page_search_bar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -6,8 +7,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('Hello World!'),
+      appBar: AppBar(
+        title: Text('Search GitHub repositories'),
+        bottom: HomePageSearchBar(),
       ),
     );
   }
