@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:search_github_repositories/utility/types/json.dart';
+import 'package:search_github_repositories/util/types/json.dart';
 
 part 'owner.freezed.dart';
 part 'owner.g.dart';
