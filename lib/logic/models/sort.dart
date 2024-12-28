@@ -1,19 +1,9 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 enum Sort {
+  @JsonValue('best match')
   bestMatch,
   stars,
   forks,
-  updated;
-
-  String get name {
-    switch (this) {
-      case bestMatch:
-        return 'best match';
-      case stars:
-        return 'stars';
-      case forks:
-        return 'forks';
-      case updated:
-        return 'updated';
-    }
-  }
+  updated,
 }

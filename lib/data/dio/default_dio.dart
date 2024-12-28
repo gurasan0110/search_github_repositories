@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
-class HttpClient with DioMixin implements Dio {
-  HttpClient();
+class DefaultDio with DioMixin implements Dio {
+  DefaultDio();
 
   @override
   BaseOptions get options {
