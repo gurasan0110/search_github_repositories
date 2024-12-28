@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:search_github_repositories/logic/models/owner/owner.dart';
+import 'package:search_github_repositories/utility/types/json.dart';
 
 part 'repository.freezed.dart';
 part 'repository.g.dart';
@@ -11,6 +12,5 @@ class Repository with _$Repository {
     Owner? owner,
   }) = _Repository;
 
-  factory Repository.fromJson(Map<String, Object?> json) =>
-      _$RepositoryFromJson(json);
+  factory Repository.fromJson(Json json) => _$RepositoryFromJson(json);
 }

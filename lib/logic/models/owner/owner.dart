@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:search_github_repositories/utility/types/json.dart';
 
 part 'owner.freezed.dart';
 part 'owner.g.dart';
@@ -11,5 +12,5 @@ class Owner with _$Owner {
     required String type,
   }) = _Owner;
 
-  factory Owner.fromJson(Map<String, Object?> json) => _$OwnerFromJson(json);
+  factory Owner.fromJson(Json json) => _$OwnerFromJson(json);
 }
