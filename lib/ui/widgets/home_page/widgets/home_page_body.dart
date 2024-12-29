@@ -7,8 +7,25 @@ class HomePageBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen(homePageNotifierProvider.select((s) {
+      return s.repositories.exception;
+    }), (_, exception) {
+      if (exception != null) {
+        final snackBar = SnackBar(content: Text(exception.toString()));
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      }
+    });
+
+    final isLoading = ref.watch(homePageNotifierProvider.select((s) {
+      return s.repositories.isLoading;
+    }));
+
+    if (isLoading) {
+      return Center(child: CircularProgressIndicator());
+    }
+
     final repositories = ref.watch(homePageNotifierProvider.select((s) {
-      return s.repositories;
+      return s.repositories.value;
     }));
 
     if (repositories == null) {

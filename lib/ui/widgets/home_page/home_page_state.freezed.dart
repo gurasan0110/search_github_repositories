@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HomePageState {
   SearchRepositoriesQueryParameters get queryParameters =>
       throw _privateConstructorUsedError;
-  List<Repository>? get repositories => throw _privateConstructorUsedError;
+  AsyncState<List<Repository>> get repositories =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of HomePageState
   /// with the given fields replaced by the non-null parameter values.
@@ -35,9 +36,10 @@ abstract class $HomePageStateCopyWith<$Res> {
   @useResult
   $Res call(
       {SearchRepositoriesQueryParameters queryParameters,
-      List<Repository>? repositories});
+      AsyncState<List<Repository>> repositories});
 
   $SearchRepositoriesQueryParametersCopyWith<$Res> get queryParameters;
+  $AsyncStateCopyWith<List<Repository>, $Res> get repositories;
 }
 
 /// @nodoc
@@ -56,17 +58,17 @@ class _$HomePageStateCopyWithImpl<$Res, $Val extends HomePageState>
   @override
   $Res call({
     Object? queryParameters = null,
-    Object? repositories = freezed,
+    Object? repositories = null,
   }) {
     return _then(_value.copyWith(
       queryParameters: null == queryParameters
           ? _value.queryParameters
           : queryParameters // ignore: cast_nullable_to_non_nullable
               as SearchRepositoriesQueryParameters,
-      repositories: freezed == repositories
+      repositories: null == repositories
           ? _value.repositories
           : repositories // ignore: cast_nullable_to_non_nullable
-              as List<Repository>?,
+              as AsyncState<List<Repository>>,
     ) as $Val);
   }
 
@@ -78,6 +80,17 @@ class _$HomePageStateCopyWithImpl<$Res, $Val extends HomePageState>
     return $SearchRepositoriesQueryParametersCopyWith<$Res>(
         _value.queryParameters, (value) {
       return _then(_value.copyWith(queryParameters: value) as $Val);
+    });
+  }
+
+  /// Create a copy of HomePageState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AsyncStateCopyWith<List<Repository>, $Res> get repositories {
+    return $AsyncStateCopyWith<List<Repository>, $Res>(_value.repositories,
+        (value) {
+      return _then(_value.copyWith(repositories: value) as $Val);
     });
   }
 }
@@ -92,10 +105,12 @@ abstract class _$$HomePageStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {SearchRepositoriesQueryParameters queryParameters,
-      List<Repository>? repositories});
+      AsyncState<List<Repository>> repositories});
 
   @override
   $SearchRepositoriesQueryParametersCopyWith<$Res> get queryParameters;
+  @override
+  $AsyncStateCopyWith<List<Repository>, $Res> get repositories;
 }
 
 /// @nodoc
@@ -112,17 +127,17 @@ class __$$HomePageStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? queryParameters = null,
-    Object? repositories = freezed,
+    Object? repositories = null,
   }) {
     return _then(_$HomePageStateImpl(
       queryParameters: null == queryParameters
           ? _value.queryParameters
           : queryParameters // ignore: cast_nullable_to_non_nullable
               as SearchRepositoriesQueryParameters,
-      repositories: freezed == repositories
-          ? _value._repositories
+      repositories: null == repositories
+          ? _value.repositories
           : repositories // ignore: cast_nullable_to_non_nullable
-              as List<Repository>?,
+              as AsyncState<List<Repository>>,
     ));
   }
 }
@@ -132,21 +147,14 @@ class __$$HomePageStateImplCopyWithImpl<$Res>
 class _$HomePageStateImpl implements _HomePageState {
   const _$HomePageStateImpl(
       {this.queryParameters = const SearchRepositoriesQueryParameters(),
-      final List<Repository>? repositories})
-      : _repositories = repositories;
+      this.repositories = const AsyncState<List<Repository>>()});
 
   @override
   @JsonKey()
   final SearchRepositoriesQueryParameters queryParameters;
-  final List<Repository>? _repositories;
   @override
-  List<Repository>? get repositories {
-    final value = _repositories;
-    if (value == null) return null;
-    if (_repositories is EqualUnmodifiableListView) return _repositories;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  @JsonKey()
+  final AsyncState<List<Repository>> repositories;
 
   @override
   String toString() {
@@ -160,13 +168,12 @@ class _$HomePageStateImpl implements _HomePageState {
             other is _$HomePageStateImpl &&
             (identical(other.queryParameters, queryParameters) ||
                 other.queryParameters == queryParameters) &&
-            const DeepCollectionEquality()
-                .equals(other._repositories, _repositories));
+            (identical(other.repositories, repositories) ||
+                other.repositories == repositories));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, queryParameters,
-      const DeepCollectionEquality().hash(_repositories));
+  int get hashCode => Object.hash(runtimeType, queryParameters, repositories);
 
   /// Create a copy of HomePageState
   /// with the given fields replaced by the non-null parameter values.
@@ -180,12 +187,12 @@ class _$HomePageStateImpl implements _HomePageState {
 abstract class _HomePageState implements HomePageState {
   const factory _HomePageState(
       {final SearchRepositoriesQueryParameters queryParameters,
-      final List<Repository>? repositories}) = _$HomePageStateImpl;
+      final AsyncState<List<Repository>> repositories}) = _$HomePageStateImpl;
 
   @override
   SearchRepositoriesQueryParameters get queryParameters;
   @override
-  List<Repository>? get repositories;
+  AsyncState<List<Repository>> get repositories;
 
   /// Create a copy of HomePageState
   /// with the given fields replaced by the non-null parameter values.

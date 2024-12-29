@@ -31,14 +31,25 @@ class HomePageNotifier extends _$HomePageNotifier {
   }
 
   Future<void> _searchRepositories() async {
+    if (state.repositories.isLoading) {
+      return;
+    }
+
     if (state.queryParameters.q.isEmpty) {
       return;
     }
 
-    final repositories = await ref
-        .watch(repositoryRepositoryProvider)
-        .searchRepositories(queryParameters: state.queryParameters);
+    state = state.copyWith.repositories(isLoading: true);
 
-    state = state.copyWith(repositories: repositories);
+    try {
+      final repositories = await ref
+          .watch(repositoryRepositoryProvider)
+          .searchRepositories(queryParameters: state.queryParameters);
+      state = state.copyWith.repositories(value: repositories);
+    } on Exception catch (exception) {
+      state = state.copyWith.repositories(exception: exception);
+    } finally {
+      state = state.copyWith.repositories(isLoading: false);
+    }
   }
 }
