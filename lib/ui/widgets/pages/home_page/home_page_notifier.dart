@@ -2,7 +2,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:search_github_repositories/data/repositories/repository_repository/repository_repository.dart';
 import 'package:search_github_repositories/logic/models/order.dart';
 import 'package:search_github_repositories/logic/models/sort.dart';
-import 'package:search_github_repositories/ui/widgets/home_page/home_page_state.dart';
+import 'package:search_github_repositories/ui/widgets/pages/home_page/home_page_state.dart';
 
 part 'home_page_notifier.g.dart';
 

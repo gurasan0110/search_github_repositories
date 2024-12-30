@@ -20,8 +20,14 @@ Repository _$RepositoryFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Repository {
-  String get name => throw _privateConstructorUsedError;
+  String get fullName => throw _privateConstructorUsedError;
   Owner? get owner => throw _privateConstructorUsedError;
+  Uri get htmlUrl => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  String get updatedAt => throw _privateConstructorUsedError;
+  int get stargazersCount => throw _privateConstructorUsedError;
+  String? get language => throw _privateConstructorUsedError;
+  bool get archived => throw _privateConstructorUsedError;
 
   /// Serializes this Repository to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +45,15 @@ abstract class $RepositoryCopyWith<$Res> {
           Repository value, $Res Function(Repository) then) =
       _$RepositoryCopyWithImpl<$Res, Repository>;
   @useResult
-  $Res call({String name, Owner? owner});
+  $Res call(
+      {String fullName,
+      Owner? owner,
+      Uri htmlUrl,
+      String? description,
+      String updatedAt,
+      int stargazersCount,
+      String? language,
+      bool archived});
 
   $OwnerCopyWith<$Res>? get owner;
 }
@@ -59,18 +73,48 @@ class _$RepositoryCopyWithImpl<$Res, $Val extends Repository>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? fullName = null,
     Object? owner = freezed,
+    Object? htmlUrl = null,
+    Object? description = freezed,
+    Object? updatedAt = null,
+    Object? stargazersCount = null,
+    Object? language = freezed,
+    Object? archived = null,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
               as String,
       owner: freezed == owner
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
               as Owner?,
+      htmlUrl: null == htmlUrl
+          ? _value.htmlUrl
+          : htmlUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String,
+      stargazersCount: null == stargazersCount
+          ? _value.stargazersCount
+          : stargazersCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      language: freezed == language
+          ? _value.language
+          : language // ignore: cast_nullable_to_non_nullable
+              as String?,
+      archived: null == archived
+          ? _value.archived
+          : archived // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -97,7 +141,15 @@ abstract class _$$RepositoryImplCopyWith<$Res>
       __$$RepositoryImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, Owner? owner});
+  $Res call(
+      {String fullName,
+      Owner? owner,
+      Uri htmlUrl,
+      String? description,
+      String updatedAt,
+      int stargazersCount,
+      String? language,
+      bool archived});
 
   @override
   $OwnerCopyWith<$Res>? get owner;
@@ -116,18 +168,48 @@ class __$$RepositoryImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? fullName = null,
     Object? owner = freezed,
+    Object? htmlUrl = null,
+    Object? description = freezed,
+    Object? updatedAt = null,
+    Object? stargazersCount = null,
+    Object? language = freezed,
+    Object? archived = null,
   }) {
     return _then(_$RepositoryImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
               as String,
       owner: freezed == owner
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
               as Owner?,
+      htmlUrl: null == htmlUrl
+          ? _value.htmlUrl
+          : htmlUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String,
+      stargazersCount: null == stargazersCount
+          ? _value.stargazersCount
+          : stargazersCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      language: freezed == language
+          ? _value.language
+          : language // ignore: cast_nullable_to_non_nullable
+              as String?,
+      archived: null == archived
+          ? _value.archived
+          : archived // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -135,19 +217,39 @@ class __$$RepositoryImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$RepositoryImpl implements _Repository {
-  const _$RepositoryImpl({required this.name, this.owner});
+  const _$RepositoryImpl(
+      {required this.fullName,
+      this.owner,
+      required this.htmlUrl,
+      this.description,
+      required this.updatedAt,
+      required this.stargazersCount,
+      this.language,
+      required this.archived});
 
   factory _$RepositoryImpl.fromJson(Map<String, dynamic> json) =>
       _$$RepositoryImplFromJson(json);
 
   @override
-  final String name;
+  final String fullName;
   @override
   final Owner? owner;
+  @override
+  final Uri htmlUrl;
+  @override
+  final String? description;
+  @override
+  final String updatedAt;
+  @override
+  final int stargazersCount;
+  @override
+  final String? language;
+  @override
+  final bool archived;
 
   @override
   String toString() {
-    return 'Repository(name: $name, owner: $owner)';
+    return 'Repository(fullName: $fullName, owner: $owner, htmlUrl: $htmlUrl, description: $description, updatedAt: $updatedAt, stargazersCount: $stargazersCount, language: $language, archived: $archived)';
   }
 
   @override
@@ -155,13 +257,26 @@ class _$RepositoryImpl implements _Repository {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RepositoryImpl &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.owner, owner) || other.owner == owner));
+            (identical(other.fullName, fullName) ||
+                other.fullName == fullName) &&
+            (identical(other.owner, owner) || other.owner == owner) &&
+            (identical(other.htmlUrl, htmlUrl) || other.htmlUrl == htmlUrl) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.stargazersCount, stargazersCount) ||
+                other.stargazersCount == stargazersCount) &&
+            (identical(other.language, language) ||
+                other.language == language) &&
+            (identical(other.archived, archived) ||
+                other.archived == archived));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, name, owner);
+  int get hashCode => Object.hash(runtimeType, fullName, owner, htmlUrl,
+      description, updatedAt, stargazersCount, language, archived);
 
   /// Create a copy of Repository
   /// with the given fields replaced by the non-null parameter values.
@@ -180,16 +295,35 @@ class _$RepositoryImpl implements _Repository {
 }
 
 abstract class _Repository implements Repository {
-  const factory _Repository({required final String name, final Owner? owner}) =
-      _$RepositoryImpl;
+  const factory _Repository(
+      {required final String fullName,
+      final Owner? owner,
+      required final Uri htmlUrl,
+      final String? description,
+      required final String updatedAt,
+      required final int stargazersCount,
+      final String? language,
+      required final bool archived}) = _$RepositoryImpl;
 
   factory _Repository.fromJson(Map<String, dynamic> json) =
       _$RepositoryImpl.fromJson;
 
   @override
-  String get name;
+  String get fullName;
   @override
   Owner? get owner;
+  @override
+  Uri get htmlUrl;
+  @override
+  String? get description;
+  @override
+  String get updatedAt;
+  @override
+  int get stargazersCount;
+  @override
+  String? get language;
+  @override
+  bool get archived;
 
   /// Create a copy of Repository
   /// with the given fields replaced by the non-null parameter values.

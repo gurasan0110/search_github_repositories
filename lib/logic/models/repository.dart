@@ -8,8 +8,14 @@ part 'repository.g.dart';
 @freezed
 class Repository with _$Repository {
   const factory Repository({
-    required String name,
+    required String fullName,
     Owner? owner,
+    required Uri htmlUrl,
+    String? description,
+    required String updatedAt,
+    required int stargazersCount,
+    String? language,
+    required bool archived,
   }) = _Repository;
 
   factory Repository.fromJson(Json json) => _$RepositoryFromJson(json);

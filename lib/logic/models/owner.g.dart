@@ -7,14 +7,17 @@ part of 'owner.dart';
 // **************************************************************************
 
 _$OwnerImpl _$$OwnerImplFromJson(Map<String, dynamic> json) => _$OwnerImpl(
-      login: json['login'] as String,
       avatarUrl: json['avatar_url'] as String,
-      type: json['type'] as String,
+      type: $enumDecode(_$OwnerTypeEnumMap, json['type']),
     );
 
 Map<String, dynamic> _$$OwnerImplToJson(_$OwnerImpl instance) =>
     <String, dynamic>{
-      'login': instance.login,
       'avatar_url': instance.avatarUrl,
-      'type': instance.type,
+      'type': _$OwnerTypeEnumMap[instance.type]!,
     };
+
+const _$OwnerTypeEnumMap = {
+  OwnerType.user: 'User',
+  OwnerType.organization: 'Organization',
+};

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:search_github_repositories/logic/models/order.dart';
 import 'package:search_github_repositories/logic/models/sort.dart';
-import 'package:search_github_repositories/ui/widgets/home_page/home_page_notifier.dart';
+import 'package:search_github_repositories/ui/widgets/pages/home_page/home_page_notifier.dart';
 
 class HomePageMenuAnchor extends ConsumerWidget {
   const HomePageMenuAnchor({super.key});
@@ -18,9 +18,13 @@ class HomePageMenuAnchor extends ConsumerWidget {
             }));
 
             return MenuItemButton(
-              onPressed: () {
-                ref.read(homePageNotifierProvider.notifier).setSort(sort: sort);
-              },
+              onPressed: isEqual
+                  ? null
+                  : () {
+                      ref
+                          .read(homePageNotifierProvider.notifier)
+                          .setSort(sort: sort);
+                    },
               trailingIcon: isEqual ? Icon(Icons.check) : null,
               child: Text(sort.name),
             );
@@ -34,11 +38,13 @@ class HomePageMenuAnchor extends ConsumerWidget {
             }));
 
             return MenuItemButton(
-              onPressed: () {
-                ref
-                    .read(homePageNotifierProvider.notifier)
-                    .setOrder(order: order);
-              },
+              onPressed: isEqual
+                  ? null
+                  : () {
+                      ref
+                          .read(homePageNotifierProvider.notifier)
+                          .setOrder(order: order);
+                    },
               trailingIcon: isEqual ? Icon(Icons.check) : null,
               child: Text(order.name),
             );

@@ -20,9 +20,8 @@ Owner _$OwnerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Owner {
-  String get login => throw _privateConstructorUsedError;
   String get avatarUrl => throw _privateConstructorUsedError;
-  String get type => throw _privateConstructorUsedError;
+  OwnerType get type => throw _privateConstructorUsedError;
 
   /// Serializes this Owner to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,7 +37,7 @@ abstract class $OwnerCopyWith<$Res> {
   factory $OwnerCopyWith(Owner value, $Res Function(Owner) then) =
       _$OwnerCopyWithImpl<$Res, Owner>;
   @useResult
-  $Res call({String login, String avatarUrl, String type});
+  $Res call({String avatarUrl, OwnerType type});
 }
 
 /// @nodoc
@@ -56,15 +55,10 @@ class _$OwnerCopyWithImpl<$Res, $Val extends Owner>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? login = null,
     Object? avatarUrl = null,
     Object? type = null,
   }) {
     return _then(_value.copyWith(
-      login: null == login
-          ? _value.login
-          : login // ignore: cast_nullable_to_non_nullable
-              as String,
       avatarUrl: null == avatarUrl
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
@@ -72,7 +66,7 @@ class _$OwnerCopyWithImpl<$Res, $Val extends Owner>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as OwnerType,
     ) as $Val);
   }
 }
@@ -84,7 +78,7 @@ abstract class _$$OwnerImplCopyWith<$Res> implements $OwnerCopyWith<$Res> {
       __$$OwnerImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String login, String avatarUrl, String type});
+  $Res call({String avatarUrl, OwnerType type});
 }
 
 /// @nodoc
@@ -100,15 +94,10 @@ class __$$OwnerImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? login = null,
     Object? avatarUrl = null,
     Object? type = null,
   }) {
     return _then(_$OwnerImpl(
-      login: null == login
-          ? _value.login
-          : login // ignore: cast_nullable_to_non_nullable
-              as String,
       avatarUrl: null == avatarUrl
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
@@ -116,7 +105,7 @@ class __$$OwnerImplCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as OwnerType,
     ));
   }
 }
@@ -124,22 +113,19 @@ class __$$OwnerImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$OwnerImpl implements _Owner {
-  const _$OwnerImpl(
-      {required this.login, required this.avatarUrl, required this.type});
+  const _$OwnerImpl({required this.avatarUrl, required this.type});
 
   factory _$OwnerImpl.fromJson(Map<String, dynamic> json) =>
       _$$OwnerImplFromJson(json);
 
   @override
-  final String login;
-  @override
   final String avatarUrl;
   @override
-  final String type;
+  final OwnerType type;
 
   @override
   String toString() {
-    return 'Owner(login: $login, avatarUrl: $avatarUrl, type: $type)';
+    return 'Owner(avatarUrl: $avatarUrl, type: $type)';
   }
 
   @override
@@ -147,7 +133,6 @@ class _$OwnerImpl implements _Owner {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OwnerImpl &&
-            (identical(other.login, login) || other.login == login) &&
             (identical(other.avatarUrl, avatarUrl) ||
                 other.avatarUrl == avatarUrl) &&
             (identical(other.type, type) || other.type == type));
@@ -155,7 +140,7 @@ class _$OwnerImpl implements _Owner {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, login, avatarUrl, type);
+  int get hashCode => Object.hash(runtimeType, avatarUrl, type);
 
   /// Create a copy of Owner
   /// with the given fields replaced by the non-null parameter values.
@@ -175,18 +160,15 @@ class _$OwnerImpl implements _Owner {
 
 abstract class _Owner implements Owner {
   const factory _Owner(
-      {required final String login,
-      required final String avatarUrl,
-      required final String type}) = _$OwnerImpl;
+      {required final String avatarUrl,
+      required final OwnerType type}) = _$OwnerImpl;
 
   factory _Owner.fromJson(Map<String, dynamic> json) = _$OwnerImpl.fromJson;
 
   @override
-  String get login;
-  @override
   String get avatarUrl;
   @override
-  String get type;
+  OwnerType get type;
 
   /// Create a copy of Owner
   /// with the given fields replaced by the non-null parameter values.

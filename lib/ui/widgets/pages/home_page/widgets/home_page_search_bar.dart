@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:search_github_repositories/ui/widgets/home_page/home_page_notifier.dart';
-import 'package:search_github_repositories/ui/widgets/home_page/widgets/home_page_menu_anchor.dart';
+import 'package:search_github_repositories/ui/widgets/pages/home_page/home_page_notifier.dart';
+import 'package:search_github_repositories/ui/widgets/pages/home_page/widgets/home_page_menu_anchor.dart';
 
 class HomePageSearchBar extends HookConsumerWidget
     implements PreferredSizeWidget {
@@ -10,7 +10,7 @@ class HomePageSearchBar extends HookConsumerWidget
 
   @override
   Size get preferredSize {
-    return Size.fromHeight(kToolbarHeight);
+    return Size.fromHeight(kToolbarHeight + 16);
   }
 
   @override
@@ -18,7 +18,7 @@ class HomePageSearchBar extends HookConsumerWidget
     final controller = useTextEditingController();
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
       child: SearchBar(
         controller: controller,
         hintText: 'リポジトリを検索',

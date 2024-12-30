@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:search_github_repositories/ui/widgets/app_icon.dart';
-import 'package:search_github_repositories/ui/widgets/home_page/widgets/home_page_body.dart';
-import 'package:search_github_repositories/ui/widgets/home_page/widgets/home_page_search_bar.dart';
+import 'package:search_github_repositories/ui/widgets/pages/home_page/widgets/home_page_body.dart';
+import 'package:search_github_repositories/ui/widgets/pages/home_page/widgets/home_page_search_bar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,6 +12,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: AppIcon(),
         bottom: HomePageSearchBar(),
+        centerTitle: true,
         forceMaterialTransparency: true,
       ),
       body: HomePageBody(),
