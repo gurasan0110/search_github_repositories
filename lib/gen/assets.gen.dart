@@ -15,11 +15,11 @@ import 'package:vector_graphics/vector_graphics.dart' as _vg;
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/icon.svg
-  SvgGenImage get icon => const SvgGenImage('assets/images/icon.svg');
+  /// File path: assets/images/logo.svg
+  SvgGenImage get logo => const SvgGenImage('assets/images/logo.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [icon];
+  List<SvgGenImage> get values => [logo];
 }
 
 class Assets {

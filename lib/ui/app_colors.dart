@@ -3,7 +3,7 @@ import 'dart:ui';
 class AppColors {
   const AppColors._();
 
-  static const icon = Color(0xfff0f6fc);
+  static const logo = Color(0xfff0f6fc);
   static const avatarBorder = Color(0x26ffffff);
   static const archiveLabelText = Color(0xffd29922);
   static const archiveLabelBorder = Color(0xff9e6a03);
