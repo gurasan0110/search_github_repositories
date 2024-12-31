@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:search_github_repositories/logic/models/order.dart';
 import 'package:search_github_repositories/logic/models/sort.dart';
+import 'package:search_github_repositories/ui/widgets/app_text.dart';
 import 'package:search_github_repositories/ui/widgets/pages/home_page/home_page_notifier.dart';
 
 class HomePageMenuAnchor extends ConsumerWidget {
@@ -26,10 +27,10 @@ class HomePageMenuAnchor extends ConsumerWidget {
                           .setSort(sort: sort);
                     },
               trailingIcon: isEqual ? Icon(Icons.check) : null,
-              child: Text(sort.name),
+              child: AppText(sort.name),
             );
           }).toList(),
-          child: Text('Sort'),
+          child: AppText('Sort'),
         ),
         SubmenuButton(
           menuChildren: Order.values.map((order) {
@@ -46,10 +47,10 @@ class HomePageMenuAnchor extends ConsumerWidget {
                           .setOrder(order: order);
                     },
               trailingIcon: isEqual ? Icon(Icons.check) : null,
-              child: Text(order.name),
+              child: AppText(order.name),
             );
           }).toList(),
-          child: Text('Order'),
+          child: AppText('Order'),
         ),
       ],
       builder: (context, controller, child) {

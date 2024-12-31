@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:search_github_repositories/ui/app_colors.dart';
+import 'package:search_github_repositories/ui/widgets/app_text.dart';
 
 class ArchiveLabel extends StatelessWidget {
   const ArchiveLabel({super.key});
@@ -12,13 +13,11 @@ class ArchiveLabel extends StatelessWidget {
         border: Border.all(color: AppColors.archiveLabelBorder),
         borderRadius: BorderRadius.circular(8.5),
       ),
-      child: Text(
+      child: AppText(
         'Public archive',
-        style: TextStyle(
-          color: AppColors.archiveLabelText,
-          fontSize: 10,
-          fontWeight: FontWeight.bold,
-        ),
+        color: AppColors.archiveLabelText,
+        fontSize: 10,
+        fontWeight: FontWeight.bold,
       ),
     );
   }
