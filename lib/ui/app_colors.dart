@@ -9,6 +9,6 @@ class AppColors {
   static const archiveLabelBorder = Color(0xff9e6a03);
   static const listTileAccentText = Color(0xff4493f8);
   static const listTileDefaultText = Color(0xfff0f6fc);
-  static const listTileMutedText = Color(0xff9198a1);
+  static const listTileMuted = Color(0xff9198a1);
   static const listTileBorder = Color(0xff3d444d);
 }

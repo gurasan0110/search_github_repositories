@@ -24,8 +24,10 @@ mixin _$Repository {
   Owner? get owner => throw _privateConstructorUsedError;
   Uri get htmlUrl => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
+  @UpdatedAtConverter()
   String get updatedAt => throw _privateConstructorUsedError;
-  int get stargazersCount => throw _privateConstructorUsedError;
+  @StargazersCountConverter()
+  String get stargazersCount => throw _privateConstructorUsedError;
   String? get language => throw _privateConstructorUsedError;
   bool get archived => throw _privateConstructorUsedError;
 
@@ -50,8 +52,8 @@ abstract class $RepositoryCopyWith<$Res> {
       Owner? owner,
       Uri htmlUrl,
       String? description,
-      String updatedAt,
-      int stargazersCount,
+      @UpdatedAtConverter() String updatedAt,
+      @StargazersCountConverter() String stargazersCount,
       String? language,
       bool archived});
 
@@ -106,7 +108,7 @@ class _$RepositoryCopyWithImpl<$Res, $Val extends Repository>
       stargazersCount: null == stargazersCount
           ? _value.stargazersCount
           : stargazersCount // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       language: freezed == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
@@ -146,8 +148,8 @@ abstract class _$$RepositoryImplCopyWith<$Res>
       Owner? owner,
       Uri htmlUrl,
       String? description,
-      String updatedAt,
-      int stargazersCount,
+      @UpdatedAtConverter() String updatedAt,
+      @StargazersCountConverter() String stargazersCount,
       String? language,
       bool archived});
 
@@ -201,7 +203,7 @@ class __$$RepositoryImplCopyWithImpl<$Res>
       stargazersCount: null == stargazersCount
           ? _value.stargazersCount
           : stargazersCount // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       language: freezed == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
@@ -222,8 +224,8 @@ class _$RepositoryImpl implements _Repository {
       this.owner,
       required this.htmlUrl,
       this.description,
-      required this.updatedAt,
-      required this.stargazersCount,
+      @UpdatedAtConverter() required this.updatedAt,
+      @StargazersCountConverter() required this.stargazersCount,
       this.language,
       required this.archived});
 
@@ -239,9 +241,11 @@ class _$RepositoryImpl implements _Repository {
   @override
   final String? description;
   @override
+  @UpdatedAtConverter()
   final String updatedAt;
   @override
-  final int stargazersCount;
+  @StargazersCountConverter()
+  final String stargazersCount;
   @override
   final String? language;
   @override
@@ -300,8 +304,8 @@ abstract class _Repository implements Repository {
       final Owner? owner,
       required final Uri htmlUrl,
       final String? description,
-      required final String updatedAt,
-      required final int stargazersCount,
+      @UpdatedAtConverter() required final String updatedAt,
+      @StargazersCountConverter() required final String stargazersCount,
       final String? language,
       required final bool archived}) = _$RepositoryImpl;
 
@@ -317,9 +321,11 @@ abstract class _Repository implements Repository {
   @override
   String? get description;
   @override
+  @UpdatedAtConverter()
   String get updatedAt;
   @override
-  int get stargazersCount;
+  @StargazersCountConverter()
+  String get stargazersCount;
   @override
   String? get language;
   @override
