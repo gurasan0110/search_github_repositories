@@ -20,13 +20,8 @@ class HomePageNotifier extends _$HomePageNotifier {
     await _searchRepositories();
   }
 
-  Future<void> setSort({required Sort sort}) async {
-    state = state.copyWith.queryParameters(sort: sort);
-    await _searchRepositories();
-  }
-
-  Future<void> setOrder({required Order order}) async {
-    state = state.copyWith.queryParameters(order: order);
+  Future<void> setSortAndOrder(Sort sort, Order order) async {
+    state = state.copyWith.queryParameters(sort: sort, order: order);
     await _searchRepositories();
   }
 

@@ -10,48 +10,32 @@ class HomePageMenuAnchor extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final (setSort, setOrder) = ref.watch(homePageNotifierProvider.select(
+      (s) => (s.queryParameters.sort, s.queryParameters.order),
+    ));
+
     return MenuAnchor(
       menuChildren: [
-        SubmenuButton(
-          menuChildren: Sort.values.map((sort) {
-            final isEqual = ref.watch(homePageNotifierProvider.select((s) {
-              return s.queryParameters.sort == sort;
-            }));
-
-            return MenuItemButton(
-              onPressed: isEqual
-                  ? null
-                  : () {
-                      ref
-                          .read(homePageNotifierProvider.notifier)
-                          .setSort(sort: sort);
-                    },
-              trailingIcon: isEqual ? Icon(Icons.check) : null,
-              child: AppText(sort.name),
-            );
-          }).toList(),
-          child: AppText('Sort'),
-        ),
-        SubmenuButton(
-          menuChildren: Order.values.map((order) {
-            final isEqual = ref.watch(homePageNotifierProvider.select((s) {
-              return s.queryParameters.order == order;
-            }));
-
-            return MenuItemButton(
-              onPressed: isEqual
-                  ? null
-                  : () {
-                      ref
-                          .read(homePageNotifierProvider.notifier)
-                          .setOrder(order: order);
-                    },
-              trailingIcon: isEqual ? Icon(Icons.check) : null,
-              child: AppText(order.name),
-            );
-          }).toList(),
-          child: AppText('Order'),
-        ),
+        for (final sort in Sort.values)
+          for (final order in Order.values)
+            if (sort != Sort.bestMatch || order == Order.desc)
+              MenuItemButton(
+                onPressed: () => ref
+                    .read(homePageNotifierProvider.notifier)
+                    .setSortAndOrder(sort, order),
+                trailingIcon: sort == setSort && order == setOrder
+                    ? Icon(Icons.check)
+                    : null,
+                child: AppText(switch ((sort, order)) {
+                  (Sort.bestMatch, _) => 'Best match',
+                  (Sort.stars, Order.desc) => 'Most stars',
+                  (Sort.stars, Order.asc) => 'Fewest stars',
+                  (Sort.forks, Order.desc) => 'Most forks',
+                  (Sort.forks, Order.asc) => 'Fewest forks',
+                  (Sort.updated, Order.desc) => 'Recently updated',
+                  (Sort.updated, Order.asc) => 'Least recently updated',
+                }),
+              ),
       ],
       builder: (context, controller, child) {
         return IconButton(
