@@ -60,7 +60,7 @@ class RepositoryListTile extends StatelessWidget {
               ),
             DefaultTextStyle(
               style: TextStyle(
-                color: AppColors.listTileMutedText,
+                color: AppColors.listTileMuted,
                 fontSize: 12,
               ),
               child: Wrap(
@@ -68,8 +68,18 @@ class RepositoryListTile extends StatelessWidget {
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
                   if (language != null) AppText(language),
-                  AppText(_repository.stargazersCount.toString()),
-                  AppText(_repository.updatedAt),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.star_outline,
+                        size: 16,
+                        color: AppColors.listTileMuted,
+                      ),
+                      AppText(_repository.stargazersCount.toString()),
+                    ],
+                  ),
+                  AppText('Updated on ${_repository.updatedAt}'),
                 ].intersperse(element: AppText('・')),
               ),
             ),

@@ -14,8 +14,10 @@ _$RepositoryImpl _$$RepositoryImplFromJson(Map<String, dynamic> json) =>
           : Owner.fromJson(json['owner'] as Map<String, dynamic>),
       htmlUrl: Uri.parse(json['html_url'] as String),
       description: json['description'] as String?,
-      updatedAt: json['updated_at'] as String,
-      stargazersCount: (json['stargazers_count'] as num).toInt(),
+      updatedAt:
+          const UpdatedAtConverter().fromJson(json['updated_at'] as String),
+      stargazersCount: const StargazersCountConverter()
+          .fromJson((json['stargazers_count'] as num).toInt()),
       language: json['language'] as String?,
       archived: json['archived'] as bool,
     );
@@ -26,8 +28,9 @@ Map<String, dynamic> _$$RepositoryImplToJson(_$RepositoryImpl instance) =>
       'owner': instance.owner,
       'html_url': instance.htmlUrl.toString(),
       'description': instance.description,
-      'updated_at': instance.updatedAt,
-      'stargazers_count': instance.stargazersCount,
+      'updated_at': const UpdatedAtConverter().toJson(instance.updatedAt),
+      'stargazers_count':
+          const StargazersCountConverter().toJson(instance.stargazersCount),
       'language': instance.language,
       'archived': instance.archived,
     };

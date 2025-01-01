@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:search_github_repositories/logic/models/owner.dart';
+import 'package:search_github_repositories/util/converters/stargazers_count_converter.dart';
+import 'package:search_github_repositories/util/converters/updated_at_converter.dart';
 import 'package:search_github_repositories/util/types/json.dart';
 
 part 'repository.freezed.dart';
@@ -12,8 +14,8 @@ class Repository with _$Repository {
     Owner? owner,
     required Uri htmlUrl,
     String? description,
-    required String updatedAt,
-    required int stargazersCount,
+    @UpdatedAtConverter() required String updatedAt,
+    @StargazersCountConverter() required String stargazersCount,
     String? language,
     required bool archived,
   }) = _Repository;
