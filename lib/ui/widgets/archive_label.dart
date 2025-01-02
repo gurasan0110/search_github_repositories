@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:search_github_repositories/ui/app_colors.dart';
+import 'package:search_github_repositories/ui/colors/app_colors.dart';
 import 'package:search_github_repositories/ui/widgets/app_text.dart';
 
 class ArchiveLabel extends StatelessWidget {

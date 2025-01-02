@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:search_github_repositories/logic/models/repository.dart';
-import 'package:search_github_repositories/ui/app_colors.dart';
+import 'package:search_github_repositories/ui/colors/app_colors.dart';
 import 'package:search_github_repositories/ui/widgets/app_text.dart';
 import 'package:search_github_repositories/ui/widgets/archive_label.dart';
 import 'package:search_github_repositories/ui/widgets/avatar.dart';
+import 'package:search_github_repositories/ui/widgets/language_color_circle.dart';
 import 'package:search_github_repositories/util/extensions/iterable_extension.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -67,7 +68,15 @@ class RepositoryListTile extends StatelessWidget {
                 runSpacing: 4,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
-                  if (language != null) AppText(language),
+                  if (language != null)
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      spacing: 6,
+                      children: [
+                        LanguageColorCircle(language),
+                        AppText(language),
+                      ],
+                    ),
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
