@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'search_repositories_query_parameters.dart';
+part of 'get_search_repositories_query_parameters.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Map<String, dynamic> _$$SearchRepositoriesQueryParametersImplToJson(
-        _$SearchRepositoriesQueryParametersImpl instance) =>
+Map<String, dynamic> _$$GetSearchRepositoriesQueryParametersImplToJson(
+        _$GetSearchRepositoriesQueryParametersImpl instance) =>
     <String, dynamic>{
       'q': instance.q,
       'sort': _$SortEnumMap[instance.sort]!,

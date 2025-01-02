@@ -6,4 +6,12 @@ extension ListenableExtension<T extends Listenable> on T {
     final selectorResult = useListenableSelector(this, () => selector(this));
     return (this, selectorResult);
   }
+
+  void listen(void Function(T listenable) listener) {
+    void listenerThis() => listener(this);
+    useEffect(() {
+      addListener(listenerThis);
+      return () => removeListener(listenerThis);
+    }, []);
+  }
 }

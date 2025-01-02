@@ -1,19 +1,26 @@
-import 'package:search_github_repositories/data/models/search_repositories_query_parameters.dart';
+import 'package:search_github_repositories/data/models/get_search_repositories_query_parameters.dart';
 import 'package:search_github_repositories/data/repositories/repository_repository/repository_repository.dart';
+import 'package:search_github_repositories/data/services/repository_service/default_repository_service.dart';
 import 'package:search_github_repositories/data/services/repository_service/repository_service.dart';
+import 'package:search_github_repositories/logic/models/pagination.dart';
 import 'package:search_github_repositories/logic/models/repository.dart';
+import 'package:search_github_repositories/util/types.dart';
 
 class DefaultRepositoryRepository implements RepositoryRepository {
-  const DefaultRepositoryRepository({
-    required RepositoryService service,
-  }) : _service = service;
+  DefaultRepositoryRepository({
+    RepositoryService? service,
+  }) : _service = service ?? DefaultRepositoryService();
 
   final RepositoryService _service;
 
   @override
-  Future<List<Repository>> searchRepositories({
-    required SearchRepositoriesQueryParameters queryParameters,
-  }) {
-    return _service.searchRepositories(queryParameters: queryParameters);
+  Future<Pagination<Repository>> searchRepositories(
+    GetSearchRepositoriesQueryParameters queryParameters,
+  ) async {
+    final response = await _service.getSearchRepositories(queryParameters);
+    return Pagination.fromJson(response.data!, (object) {
+      final json = object as Json;
+      return Repository.fromJson(json);
+    });
   }
 }
