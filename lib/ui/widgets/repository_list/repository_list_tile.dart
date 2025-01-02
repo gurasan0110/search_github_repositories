@@ -71,6 +71,7 @@ class RepositoryListTile extends StatelessWidget {
                     ),
                   Row(
                     mainAxisSize: MainAxisSize.min,
+                    spacing: 4,
                     children: [
                       Icon(
                         Icons.star_outline,

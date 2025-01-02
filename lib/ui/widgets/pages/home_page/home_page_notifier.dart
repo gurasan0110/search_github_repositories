@@ -37,9 +37,7 @@ class HomePageNotifier extends _$HomePageNotifier {
     state = state.copyWith.paginationState(isLoadingNextPage: false);
   }
 
-  Future<void> researchFirstPageRepositories() async {
-    await _searchRepositories(1);
-  }
+  Future<void> researchFirstPageRepositories() => _searchRepositories(1);
 
   Future<void> _searchFirstPageRepositories() async {
     if (state.paginationState.isLoadingFirstPage) return;
@@ -49,7 +47,7 @@ class HomePageNotifier extends _$HomePageNotifier {
   }
 
   Future<void> _searchRepositories(int page) async {
-    if (state.queryParameters.q.isEmpty) return;
+    if (state.queryParameters.q.trim().isEmpty) return;
 
     state = state.copyWith.queryParameters(page: page);
 
