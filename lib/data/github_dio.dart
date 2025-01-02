@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
-class DefaultDio with DioMixin implements Dio {
-  DefaultDio();
+class GitHubDio with DioMixin implements Dio {
+  GitHubDio();
 
   @override
   BaseOptions get options {

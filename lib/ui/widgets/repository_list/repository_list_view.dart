@@ -1,32 +1,34 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:search_github_repositories/logic/models/repository.dart';
 import 'package:search_github_repositories/ui/widgets/repository_list/repository_list_tile.dart';
 
-class RepositoryListView extends ConsumerWidget {
-  const RepositoryListView({
+class RepositoryListView extends StatelessWidget {
+  const RepositoryListView(
+    this.repositories, {
     super.key,
-    required List<Repository> repositories,
-  }) : _repositories = repositories;
+    this.controller,
+    this.lastItem,
+  });
 
-  final List<Repository> _repositories;
+  final List<Repository> repositories;
+  final ScrollController? controller;
+  final Widget? lastItem;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return ListView.separated(
+      controller: controller,
       padding: EdgeInsets.symmetric(horizontal: 16).copyWith(
         bottom: max(16, MediaQuery.of(context).padding.bottom),
       ),
       itemBuilder: (context, index) {
-        final repository = _repositories[index];
-        return RepositoryListTile(repository: repository);
+        if (index == repositories.length) return lastItem;
+        return RepositoryListTile(repository: repositories[index]);
       },
-      separatorBuilder: (context, index) {
-        return SizedBox(height: 16);
-      },
-      itemCount: _repositories.length,
+      separatorBuilder: (context, index) => SizedBox(height: 16),
+      itemCount: repositories.length + (lastItem == null ? 0 : 1),
     );
   }
 }
