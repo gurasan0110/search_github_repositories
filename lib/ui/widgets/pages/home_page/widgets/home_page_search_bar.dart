@@ -10,9 +10,7 @@ class HomePageSearchBar extends HookConsumerWidget
   const HomePageSearchBar({super.key});
 
   @override
-  Size get preferredSize {
-    return Size.fromHeight(kToolbarHeight + 16);
-  }
+  Size get preferredSize => Size.fromHeight(kToolbarHeight + 16);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -34,15 +32,11 @@ class HomePageSearchBar extends HookConsumerWidget
               leading: HomePageMenuAnchor(),
               trailing: [
                 IconButton(
-                  onPressed: () {
-                    controller.clear();
-                  },
+                  onPressed: controller.clear,
                   icon: Icon(Icons.close),
                 ),
               ],
-              onSubmitted: (q) {
-                ref.read(homePageNotifierProvider.notifier).setQ(q: q);
-              },
+              onSubmitted: ref.read(homePageNotifierProvider.notifier).setQ,
               elevation: WidgetStatePropertyAll(0),
               autoFocus: true,
               textInputAction: TextInputAction.search,

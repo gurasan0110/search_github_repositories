@@ -7,7 +7,7 @@ class LanguageColorCircle extends ConsumerWidget {
 
   final String name;
 
-  static const defaultValue = 0xff9e6a03;
+  final defaultValue = 0xff9e6a03;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

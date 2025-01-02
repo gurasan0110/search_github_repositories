@@ -9,23 +9,18 @@ import 'package:search_github_repositories/util/extensions/iterable_extension.da
 import 'package:url_launcher/url_launcher.dart';
 
 class RepositoryListTile extends StatelessWidget {
-  const RepositoryListTile({
-    super.key,
-    required Repository repository,
-  }) : _repository = repository;
+  const RepositoryListTile(this.repository, {super.key});
 
-  final Repository _repository;
+  final Repository repository;
 
   @override
   Widget build(BuildContext context) {
-    final owner = _repository.owner;
-    final description = _repository.description;
-    final language = _repository.language;
+    final owner = repository.owner;
+    final description = repository.description;
+    final language = repository.language;
 
     return InkWell(
-      onTap: () async {
-        await launchUrl(_repository.htmlUrl);
-      },
+      onTap: () => launchUrl(repository.htmlUrl),
       borderRadius: BorderRadius.circular(6),
       child: Container(
         padding: EdgeInsets.all(16),
@@ -40,17 +35,17 @@ class RepositoryListTile extends StatelessWidget {
             Row(
               spacing: 10,
               children: [
-                if (owner != null) Avatar(owner: owner),
+                if (owner != null) Avatar(owner),
                 Expanded(
                   child: AppText(
-                    _repository.fullName,
+                    repository.fullName,
                     color: AppColors.listTileAccentText,
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     maxLines: 2,
                   ),
                 ),
-                if (_repository.archived) ArchiveLabel(),
+                if (repository.archived) ArchiveLabel(),
               ],
             ),
             if (description != null)
@@ -60,10 +55,7 @@ class RepositoryListTile extends StatelessWidget {
                 maxLines: 3,
               ),
             DefaultTextStyle(
-              style: TextStyle(
-                color: AppColors.listTileMuted,
-                fontSize: 12,
-              ),
+              style: TextStyle(color: AppColors.listTileMuted, fontSize: 12),
               child: Wrap(
                 runSpacing: 4,
                 crossAxisAlignment: WrapCrossAlignment.center,
@@ -85,11 +77,11 @@ class RepositoryListTile extends StatelessWidget {
                         size: 16,
                         color: AppColors.listTileMuted,
                       ),
-                      AppText(_repository.stargazersCount.toString()),
+                      AppText(repository.stargazersCount),
                     ],
                   ),
-                  AppText('Updated on ${_repository.updatedAt}'),
-                ].intersperse(element: AppText('・')),
+                  AppText('Updated on ${repository.updatedAt}'),
+                ].intersperse(AppText('・')).toList(),
               ),
             ),
           ],

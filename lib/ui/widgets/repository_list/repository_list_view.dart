@@ -25,7 +25,7 @@ class RepositoryListView extends StatelessWidget {
       ),
       itemBuilder: (context, index) {
         if (index == repositories.length) return lastItem;
-        return RepositoryListTile(repository: repositories[index]);
+        return RepositoryListTile(repositories[index]);
       },
       separatorBuilder: (context, index) => SizedBox(height: 16),
       itemCount: repositories.length + (lastItem == null ? 0 : 1),

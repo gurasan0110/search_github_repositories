@@ -37,18 +37,10 @@ class HomePageMenuAnchor extends ConsumerWidget {
                 }),
               ),
       ],
-      builder: (context, controller, child) {
-        return IconButton(
-          onPressed: () {
-            if (controller.isOpen) {
-              controller.close();
-            } else {
-              controller.open();
-            }
-          },
-          icon: Icon(Icons.arrow_drop_down),
-        );
-      },
+      builder: (context, controller, child) => IconButton(
+        onPressed: controller.isOpen ? controller.close : controller.open,
+        icon: Icon(Icons.arrow_drop_down),
+      ),
     );
   }
 }

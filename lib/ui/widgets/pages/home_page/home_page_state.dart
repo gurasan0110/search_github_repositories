@@ -11,6 +11,6 @@ class HomePageState with _$HomePageState {
     @Default(GetSearchRepositoriesQueryParameters())
     GetSearchRepositoriesQueryParameters queryParameters,
     @Default(PaginationState<Repository>())
-    PaginationState<Repository> pagination,
+    PaginationState<Repository> paginationState,
   }) = _HomePageState;
 }

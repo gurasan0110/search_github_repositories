@@ -5,13 +5,13 @@ import 'package:search_github_repositories/logic/models/owner_type.dart';
 import 'package:search_github_repositories/ui/colors/app_colors.dart';
 
 class Avatar extends StatelessWidget {
-  const Avatar({super.key, required Owner owner}) : _owner = owner;
+  const Avatar(this.owner, {super.key});
 
-  final Owner _owner;
+  final Owner owner;
 
   @override
   Widget build(BuildContext context) {
-    final borderRadius = BorderRadius.circular(switch (_owner.type) {
+    final borderRadius = BorderRadius.circular(switch (owner.type) {
       OwnerType.user => 12,
       OwnerType.organization => 6,
     });
@@ -25,7 +25,7 @@ class Avatar extends StatelessWidget {
         ),
         position: DecorationPosition.foreground,
         child: CachedNetworkImage(
-          imageUrl: _owner.avatarUrl,
+          imageUrl: owner.avatarUrl,
           width: 24,
           height: 24,
         ),

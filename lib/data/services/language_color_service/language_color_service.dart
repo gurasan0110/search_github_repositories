@@ -1,7 +1,7 @@
-import 'package:search_github_repositories/util/types.dart';
+import 'package:dio/dio.dart';
 
 abstract class LanguageColorService {
   const LanguageColorService();
 
-  Future<Json> loadLanguageColors();
+  Future<Response<String>> getLanguageColors();
 }

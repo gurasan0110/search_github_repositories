@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:search_github_repositories/data/repositories/language_color_repository/language_color_repository.dart';
 import 'package:search_github_repositories/data/services/language_color_service/default_language_color_service.dart';
 import 'package:search_github_repositories/data/services/language_color_service/language_color_service.dart';
@@ -12,19 +14,14 @@ class DefaultLanguageColorRepository implements LanguageColorRepository {
 
   @override
   Future<LanguageColors> loadLanguageColors() async {
-    final json = await _service.loadLanguageColors();
-    final entries = json.entries.map((entry) {
-      final name = entry.key;
-      final String? hexString = entry.value['color'];
-      if (hexString == null) {
-        return MapEntry(name, null);
-      }
-
-      final hex = hexString.replaceFirst('#', '0xff');
-      final value = int.parse(hex);
-      return MapEntry(name, value);
+    final response = await _service.getLanguageColors();
+    final Json json = jsonDecode(response.data!);
+    return json.map((colorName, value) {
+      final String? hexString = value['color'];
+      final colorValue = hexString == null
+          ? null
+          : int.parse(hexString.replaceFirst('#', '0xff'));
+      return MapEntry(colorName, colorValue);
     });
-
-    return Map.fromEntries(entries);
   }
 }

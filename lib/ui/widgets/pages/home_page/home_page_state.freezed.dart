@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HomePageState {
   GetSearchRepositoriesQueryParameters get queryParameters =>
       throw _privateConstructorUsedError;
-  PaginationState<Repository> get pagination =>
+  PaginationState<Repository> get paginationState =>
       throw _privateConstructorUsedError;
 
   /// Create a copy of HomePageState
@@ -36,10 +36,10 @@ abstract class $HomePageStateCopyWith<$Res> {
   @useResult
   $Res call(
       {GetSearchRepositoriesQueryParameters queryParameters,
-      PaginationState<Repository> pagination});
+      PaginationState<Repository> paginationState});
 
   $GetSearchRepositoriesQueryParametersCopyWith<$Res> get queryParameters;
-  $PaginationStateCopyWith<Repository, $Res> get pagination;
+  $PaginationStateCopyWith<Repository, $Res> get paginationState;
 }
 
 /// @nodoc
@@ -58,16 +58,16 @@ class _$HomePageStateCopyWithImpl<$Res, $Val extends HomePageState>
   @override
   $Res call({
     Object? queryParameters = null,
-    Object? pagination = null,
+    Object? paginationState = null,
   }) {
     return _then(_value.copyWith(
       queryParameters: null == queryParameters
           ? _value.queryParameters
           : queryParameters // ignore: cast_nullable_to_non_nullable
               as GetSearchRepositoriesQueryParameters,
-      pagination: null == pagination
-          ? _value.pagination
-          : pagination // ignore: cast_nullable_to_non_nullable
+      paginationState: null == paginationState
+          ? _value.paginationState
+          : paginationState // ignore: cast_nullable_to_non_nullable
               as PaginationState<Repository>,
     ) as $Val);
   }
@@ -87,10 +87,10 @@ class _$HomePageStateCopyWithImpl<$Res, $Val extends HomePageState>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $PaginationStateCopyWith<Repository, $Res> get pagination {
-    return $PaginationStateCopyWith<Repository, $Res>(_value.pagination,
+  $PaginationStateCopyWith<Repository, $Res> get paginationState {
+    return $PaginationStateCopyWith<Repository, $Res>(_value.paginationState,
         (value) {
-      return _then(_value.copyWith(pagination: value) as $Val);
+      return _then(_value.copyWith(paginationState: value) as $Val);
     });
   }
 }
@@ -105,12 +105,12 @@ abstract class _$$HomePageStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {GetSearchRepositoriesQueryParameters queryParameters,
-      PaginationState<Repository> pagination});
+      PaginationState<Repository> paginationState});
 
   @override
   $GetSearchRepositoriesQueryParametersCopyWith<$Res> get queryParameters;
   @override
-  $PaginationStateCopyWith<Repository, $Res> get pagination;
+  $PaginationStateCopyWith<Repository, $Res> get paginationState;
 }
 
 /// @nodoc
@@ -127,16 +127,16 @@ class __$$HomePageStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? queryParameters = null,
-    Object? pagination = null,
+    Object? paginationState = null,
   }) {
     return _then(_$HomePageStateImpl(
       queryParameters: null == queryParameters
           ? _value.queryParameters
           : queryParameters // ignore: cast_nullable_to_non_nullable
               as GetSearchRepositoriesQueryParameters,
-      pagination: null == pagination
-          ? _value.pagination
-          : pagination // ignore: cast_nullable_to_non_nullable
+      paginationState: null == paginationState
+          ? _value.paginationState
+          : paginationState // ignore: cast_nullable_to_non_nullable
               as PaginationState<Repository>,
     ));
   }
@@ -147,18 +147,18 @@ class __$$HomePageStateImplCopyWithImpl<$Res>
 class _$HomePageStateImpl implements _HomePageState {
   const _$HomePageStateImpl(
       {this.queryParameters = const GetSearchRepositoriesQueryParameters(),
-      this.pagination = const PaginationState<Repository>()});
+      this.paginationState = const PaginationState<Repository>()});
 
   @override
   @JsonKey()
   final GetSearchRepositoriesQueryParameters queryParameters;
   @override
   @JsonKey()
-  final PaginationState<Repository> pagination;
+  final PaginationState<Repository> paginationState;
 
   @override
   String toString() {
-    return 'HomePageState(queryParameters: $queryParameters, pagination: $pagination)';
+    return 'HomePageState(queryParameters: $queryParameters, paginationState: $paginationState)';
   }
 
   @override
@@ -168,12 +168,13 @@ class _$HomePageStateImpl implements _HomePageState {
             other is _$HomePageStateImpl &&
             (identical(other.queryParameters, queryParameters) ||
                 other.queryParameters == queryParameters) &&
-            (identical(other.pagination, pagination) ||
-                other.pagination == pagination));
+            (identical(other.paginationState, paginationState) ||
+                other.paginationState == paginationState));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, queryParameters, pagination);
+  int get hashCode =>
+      Object.hash(runtimeType, queryParameters, paginationState);
 
   /// Create a copy of HomePageState
   /// with the given fields replaced by the non-null parameter values.
@@ -187,12 +188,12 @@ class _$HomePageStateImpl implements _HomePageState {
 abstract class _HomePageState implements HomePageState {
   const factory _HomePageState(
       {final GetSearchRepositoriesQueryParameters queryParameters,
-      final PaginationState<Repository> pagination}) = _$HomePageStateImpl;
+      final PaginationState<Repository> paginationState}) = _$HomePageStateImpl;
 
   @override
   GetSearchRepositoriesQueryParameters get queryParameters;
   @override
-  PaginationState<Repository> get pagination;
+  PaginationState<Repository> get paginationState;
 
   /// Create a copy of HomePageState
   /// with the given fields replaced by the non-null parameter values.

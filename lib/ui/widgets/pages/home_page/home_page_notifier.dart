@@ -14,11 +14,9 @@ class HomePageNotifier extends _$HomePageNotifier {
   final _repository = DefaultRepositoryRepository();
 
   @override
-  HomePageState build() {
-    return HomePageState();
-  }
+  HomePageState build() => HomePageState();
 
-  Future<void> setQ({required String q}) async {
+  Future<void> setQ(String q) async {
     state = state.copyWith.queryParameters(q: q);
     await _searchFirstPageRepositories();
   }
@@ -29,14 +27,14 @@ class HomePageNotifier extends _$HomePageNotifier {
   }
 
   Future<void> searchNextPageRepositories() async {
-    if (state.pagination.isLoadingNextPage) return;
+    if (state.paginationState.isLoadingNextPage) return;
 
     final page = state.queryParameters.page + 1;
-    if (state.pagination.pagination!.maxPage < page) return;
+    if (state.paginationState.pagination!.maxPage < page) return;
 
-    state = state.copyWith.pagination(isLoadingNextPage: true);
+    state = state.copyWith.paginationState(isLoadingNextPage: true);
     await _searchRepositories(page);
-    state = state.copyWith.pagination(isLoadingNextPage: false);
+    state = state.copyWith.paginationState(isLoadingNextPage: false);
   }
 
   Future<void> researchFirstPageRepositories() async {
@@ -44,10 +42,10 @@ class HomePageNotifier extends _$HomePageNotifier {
   }
 
   Future<void> _searchFirstPageRepositories() async {
-    if (state.pagination.isLoadingFirstPage) return;
-    state = state.copyWith.pagination(isLoadingFirstPage: true);
+    if (state.paginationState.isLoadingFirstPage) return;
+    state = state.copyWith.paginationState(isLoadingFirstPage: true);
     await _searchRepositories(1);
-    state = state.copyWith.pagination(isLoadingFirstPage: false);
+    state = state.copyWith.paginationState(isLoadingFirstPage: false);
   }
 
   Future<void> _searchRepositories(int page) async {
@@ -60,13 +58,13 @@ class HomePageNotifier extends _$HomePageNotifier {
         state.queryParameters,
       );
 
-      final repositories = state.pagination.pagination?.items;
+      final repositories = state.paginationState.pagination?.items;
       final oldItems = page == 1 ? <Repository>[] : repositories!;
       final items = oldItems + pagination.items;
       final newPagination = pagination.copyWith(items: items);
-      state = state.copyWith.pagination(pagination: newPagination);
+      state = state.copyWith.paginationState(pagination: newPagination);
     } on Exception catch (exception) {
-      state = state.copyWith.pagination(exception: exception);
+      state = state.copyWith.paginationState(exception: exception);
     }
   }
 }

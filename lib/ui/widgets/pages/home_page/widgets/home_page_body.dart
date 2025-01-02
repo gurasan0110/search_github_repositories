@@ -12,7 +12,7 @@ class HomePageBody extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(
-      homePageNotifierProvider.select((s) => s.pagination.exception),
+      homePageNotifierProvider.select((s) => s.paginationState.exception),
       (_, exception) {
         final snackBar = SnackBar(content: AppText(exception.toString()));
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -20,13 +20,13 @@ class HomePageBody extends HookConsumerWidget {
     );
 
     final isLoadingFirstPage = ref.watch(homePageNotifierProvider.select(
-      (s) => s.pagination.isLoadingFirstPage,
+      (s) => s.paginationState.isLoadingFirstPage,
     ));
 
     if (isLoadingFirstPage) return Center(child: CircularProgressIndicator());
 
     final repositories = ref.watch(homePageNotifierProvider.select(
-      (s) => s.pagination.pagination?.items,
+      (s) => s.paginationState.pagination?.items,
     ));
 
     if (repositories == null) return SizedBox.shrink();
@@ -36,7 +36,7 @@ class HomePageBody extends HookConsumerWidget {
     }
 
     final isLoadingNextPage = ref.watch(homePageNotifierProvider.select(
-      (s) => s.pagination.isLoadingNextPage,
+      (s) => s.paginationState.isLoadingNextPage,
     ));
 
     final controller = useScrollController()
