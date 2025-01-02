@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:search_github_repositories/logic/models/owner.dart';
 import 'package:search_github_repositories/logic/models/owner_type.dart';
-import 'package:search_github_repositories/ui/app_colors.dart';
+import 'package:search_github_repositories/ui/colors/app_colors.dart';
 
 class Avatar extends StatelessWidget {
   const Avatar({super.key, required Owner owner}) : _owner = owner;

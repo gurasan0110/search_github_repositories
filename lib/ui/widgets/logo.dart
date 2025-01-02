@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:search_github_repositories/gen/assets.gen.dart';
-import 'package:search_github_repositories/ui/app_colors.dart';
+import 'package:search_github_repositories/ui/colors/app_colors.dart';
 import 'package:search_github_repositories/util/extensions/color_extension.dart';
 
 class Logo extends StatelessWidget {
