@@ -16,8 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PaginationState<T> {
-  Pagination<T>? get pagination => throw _privateConstructorUsedError;
-  Exception? get exception => throw _privateConstructorUsedError;
+  Result<Pagination<T>> get result => throw _privateConstructorUsedError;
   bool get isLoadingFirstPage => throw _privateConstructorUsedError;
   bool get isLoadingNextPage => throw _privateConstructorUsedError;
 
@@ -35,12 +34,11 @@ abstract class $PaginationStateCopyWith<T, $Res> {
       _$PaginationStateCopyWithImpl<T, $Res, PaginationState<T>>;
   @useResult
   $Res call(
-      {Pagination<T>? pagination,
-      Exception? exception,
+      {Result<Pagination<T>> result,
       bool isLoadingFirstPage,
       bool isLoadingNextPage});
 
-  $PaginationCopyWith<T, $Res>? get pagination;
+  $ResultCopyWith<Pagination<T>, $Res> get result;
 }
 
 /// @nodoc
@@ -58,20 +56,15 @@ class _$PaginationStateCopyWithImpl<T, $Res, $Val extends PaginationState<T>>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pagination = freezed,
-    Object? exception = freezed,
+    Object? result = null,
     Object? isLoadingFirstPage = null,
     Object? isLoadingNextPage = null,
   }) {
     return _then(_value.copyWith(
-      pagination: freezed == pagination
-          ? _value.pagination
-          : pagination // ignore: cast_nullable_to_non_nullable
-              as Pagination<T>?,
-      exception: freezed == exception
-          ? _value.exception
-          : exception // ignore: cast_nullable_to_non_nullable
-              as Exception?,
+      result: null == result
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as Result<Pagination<T>>,
       isLoadingFirstPage: null == isLoadingFirstPage
           ? _value.isLoadingFirstPage
           : isLoadingFirstPage // ignore: cast_nullable_to_non_nullable
@@ -87,13 +80,9 @@ class _$PaginationStateCopyWithImpl<T, $Res, $Val extends PaginationState<T>>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $PaginationCopyWith<T, $Res>? get pagination {
-    if (_value.pagination == null) {
-      return null;
-    }
-
-    return $PaginationCopyWith<T, $Res>(_value.pagination!, (value) {
-      return _then(_value.copyWith(pagination: value) as $Val);
+  $ResultCopyWith<Pagination<T>, $Res> get result {
+    return $ResultCopyWith<Pagination<T>, $Res>(_value.result, (value) {
+      return _then(_value.copyWith(result: value) as $Val);
     });
   }
 }
@@ -107,13 +96,12 @@ abstract class _$$PaginationStateImplCopyWith<T, $Res>
   @override
   @useResult
   $Res call(
-      {Pagination<T>? pagination,
-      Exception? exception,
+      {Result<Pagination<T>> result,
       bool isLoadingFirstPage,
       bool isLoadingNextPage});
 
   @override
-  $PaginationCopyWith<T, $Res>? get pagination;
+  $ResultCopyWith<Pagination<T>, $Res> get result;
 }
 
 /// @nodoc
@@ -129,20 +117,15 @@ class __$$PaginationStateImplCopyWithImpl<T, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pagination = freezed,
-    Object? exception = freezed,
+    Object? result = null,
     Object? isLoadingFirstPage = null,
     Object? isLoadingNextPage = null,
   }) {
     return _then(_$PaginationStateImpl<T>(
-      pagination: freezed == pagination
-          ? _value.pagination
-          : pagination // ignore: cast_nullable_to_non_nullable
-              as Pagination<T>?,
-      exception: freezed == exception
-          ? _value.exception
-          : exception // ignore: cast_nullable_to_non_nullable
-              as Exception?,
+      result: null == result
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as Result<Pagination<T>>,
       isLoadingFirstPage: null == isLoadingFirstPage
           ? _value.isLoadingFirstPage
           : isLoadingFirstPage // ignore: cast_nullable_to_non_nullable
@@ -159,15 +142,12 @@ class __$$PaginationStateImplCopyWithImpl<T, $Res>
 
 class _$PaginationStateImpl<T> implements _PaginationState<T> {
   const _$PaginationStateImpl(
-      {this.pagination,
-      this.exception,
+      {required this.result,
       this.isLoadingFirstPage = false,
       this.isLoadingNextPage = false});
 
   @override
-  final Pagination<T>? pagination;
-  @override
-  final Exception? exception;
+  final Result<Pagination<T>> result;
   @override
   @JsonKey()
   final bool isLoadingFirstPage;
@@ -177,7 +157,7 @@ class _$PaginationStateImpl<T> implements _PaginationState<T> {
 
   @override
   String toString() {
-    return 'PaginationState<$T>(pagination: $pagination, exception: $exception, isLoadingFirstPage: $isLoadingFirstPage, isLoadingNextPage: $isLoadingNextPage)';
+    return 'PaginationState<$T>(result: $result, isLoadingFirstPage: $isLoadingFirstPage, isLoadingNextPage: $isLoadingNextPage)';
   }
 
   @override
@@ -185,10 +165,7 @@ class _$PaginationStateImpl<T> implements _PaginationState<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaginationStateImpl<T> &&
-            (identical(other.pagination, pagination) ||
-                other.pagination == pagination) &&
-            (identical(other.exception, exception) ||
-                other.exception == exception) &&
+            (identical(other.result, result) || other.result == result) &&
             (identical(other.isLoadingFirstPage, isLoadingFirstPage) ||
                 other.isLoadingFirstPage == isLoadingFirstPage) &&
             (identical(other.isLoadingNextPage, isLoadingNextPage) ||
@@ -196,8 +173,8 @@ class _$PaginationStateImpl<T> implements _PaginationState<T> {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pagination, exception,
-      isLoadingFirstPage, isLoadingNextPage);
+  int get hashCode =>
+      Object.hash(runtimeType, result, isLoadingFirstPage, isLoadingNextPage);
 
   /// Create a copy of PaginationState
   /// with the given fields replaced by the non-null parameter values.
@@ -211,15 +188,12 @@ class _$PaginationStateImpl<T> implements _PaginationState<T> {
 
 abstract class _PaginationState<T> implements PaginationState<T> {
   const factory _PaginationState(
-      {final Pagination<T>? pagination,
-      final Exception? exception,
+      {required final Result<Pagination<T>> result,
       final bool isLoadingFirstPage,
       final bool isLoadingNextPage}) = _$PaginationStateImpl<T>;
 
   @override
-  Pagination<T>? get pagination;
-  @override
-  Exception? get exception;
+  Result<Pagination<T>> get result;
   @override
   bool get isLoadingFirstPage;
   @override

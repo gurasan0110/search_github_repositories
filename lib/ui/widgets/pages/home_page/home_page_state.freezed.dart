@@ -147,7 +147,8 @@ class __$$HomePageStateImplCopyWithImpl<$Res>
 class _$HomePageStateImpl implements _HomePageState {
   const _$HomePageStateImpl(
       {this.queryParameters = const GetSearchRepositoriesQueryParameters(),
-      this.paginationState = const PaginationState<Repository>()});
+      this.paginationState =
+          const PaginationState<Repository>(result: Result())});
 
   @override
   @JsonKey()

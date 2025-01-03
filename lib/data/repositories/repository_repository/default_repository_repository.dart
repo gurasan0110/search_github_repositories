@@ -4,6 +4,7 @@ import 'package:search_github_repositories/data/services/repository_service/defa
 import 'package:search_github_repositories/data/services/repository_service/repository_service.dart';
 import 'package:search_github_repositories/logic/models/pagination.dart';
 import 'package:search_github_repositories/logic/models/repository.dart';
+import 'package:search_github_repositories/util/result.dart';
 import 'package:search_github_repositories/util/types.dart';
 
 class DefaultRepositoryRepository implements RepositoryRepository {
@@ -14,13 +15,21 @@ class DefaultRepositoryRepository implements RepositoryRepository {
   final RepositoryService _service;
 
   @override
-  Future<Pagination<Repository>> searchRepositories(
+  Future<Result<Pagination<Repository>>> searchRepositories(
     GetSearchRepositoriesQueryParameters queryParameters,
   ) async {
-    final response = await _service.getSearchRepositories(queryParameters);
-    return Pagination.fromJson(response.data!, (object) {
-      final json = object as Json;
-      return Repository.fromJson(json);
-    });
+    final result = await _service.getSearchRepositories(queryParameters);
+    return result.map(
+      exception: (exception) => Result(exception: exception),
+      value: (response) {
+        final json = response!.data!;
+        final pagination = Pagination.fromJson(json, (object) {
+          final json = object as Json;
+          return Repository.fromJson(json);
+        });
+
+        return Result(value: pagination);
+      },
+    );
   }
 }
