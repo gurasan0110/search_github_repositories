@@ -12,9 +12,11 @@ class HomePageBody extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(
-      homePageNotifierProvider.select((s) => s.paginationState.exception),
+      homePageNotifierProvider.select(
+        (s) => s.paginationState.result.exception,
+      ),
       (_, exception) {
-        final snackBar = SnackBar(content: AppText(exception.toString()));
+        final snackBar = SnackBar(content: AppText(exception!));
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       },
     );
@@ -26,7 +28,7 @@ class HomePageBody extends HookConsumerWidget {
     if (isLoadingFirstPage) return Center(child: CircularProgressIndicator());
 
     final repositories = ref.watch(homePageNotifierProvider.select(
-      (s) => s.paginationState.pagination?.items,
+      (s) => s.paginationState.result.value?.items,
     ));
 
     if (repositories == null) return SizedBox.shrink();

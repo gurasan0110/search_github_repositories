@@ -14,10 +14,13 @@ Future<void> main() async {
   ]);
 
   final repository = DefaultLanguageColorRepository();
-  final languageColors = await repository.loadLanguageColors();
+  final result = await repository.loadLanguageColors();
+  if (result.hasException) {
+    debugPrint(result.exception);
+  }
 
   runApp(ProviderScope(
-    overrides: [languageColorsProvider.overrideWithValue(languageColors)],
+    overrides: [languageColorsProvider.overrideWithValue(result.value!)],
     child: const App(),
   ));
 }
