@@ -18,6 +18,7 @@ class FakeLanguageColorService implements LanguageColorService {
       }
     }
     ''';
+
     final response = Response(data: data, requestOptions: RequestOptions());
     return Future.value(response);
   }
