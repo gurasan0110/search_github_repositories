@@ -15,11 +15,14 @@ void main() {
       setUp(() async => languageColors = await repository.loadLanguageColors());
 
       test(
-        'Dartのカラーバリューは0xff00B4ABである',
+        'DartのcolorValueは0xff00B4ABである',
         () => expect(languageColors['Dart'], 0xff00B4AB),
       );
 
-      test('ASLのカラーバリューはnullである', () => expect(languageColors['ASL'], isNull));
+      test(
+        'ASLのcolorValueはnullである',
+        () => expect(languageColors['ASL'], isNull),
+      );
     });
   });
 }
