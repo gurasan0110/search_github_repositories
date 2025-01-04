@@ -9,6 +9,7 @@ extension ListenableExtension<T extends Listenable> on T {
 
   void listen(void Function(T listenable) listener) {
     void listenerThis() => listener(this);
+
     useEffect(() {
       addListener(listenerThis);
       return () => removeListener(listenerThis);
