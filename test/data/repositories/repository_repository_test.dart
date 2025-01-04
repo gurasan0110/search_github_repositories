@@ -9,14 +9,14 @@ import '../../../testing/data/services/fake_repository_service.dart';
 
 void main() {
   group('RepositoryRepository', () {
-    final service = FakeRepositoryService();
+    final service = const FakeRepositoryService();
     final repository = RepositoryRepository(service: service);
 
     group('searchRepositories', () {
       late Pagination<Repository> pagination;
 
       setUp(() async {
-        final queryParameters = GetSearchRepositoriesQueryParameters();
+        final queryParameters = const GetSearchRepositoriesQueryParameters();
         pagination = await repository.searchRepositories(queryParameters);
       });
 
