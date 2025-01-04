@@ -16,7 +16,7 @@ void main() {
 
       test(
         'Dartのカラーバリューは0xff00B4ABである',
-        () => expect(languageColors['Dart'], equals(0xff00B4AB)),
+        () => expect(languageColors['Dart'], 0xff00B4AB),
       );
 
       test('ASLのカラーバリューはnullである', () => expect(languageColors['ASL'], isNull));
