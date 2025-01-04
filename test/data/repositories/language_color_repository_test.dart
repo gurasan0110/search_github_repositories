@@ -5,27 +5,21 @@ import 'package:search_github_repositories/util/types.dart';
 import '../../../testing/data/services/fake_language_color_service.dart';
 
 void main() {
-  final service = const FakeLanguageColorService();
-  final repository = LanguageColorRepository(service: service);
+  group('LanguageColorRepository', () {
+    final service = const FakeLanguageColorService();
+    final repository = LanguageColorRepository(service: service);
 
-  group(
-    'LanguageColorRepository',
-    () => group('loadLanguageColors', () {
+    group('loadLanguageColors', () {
       late LanguageColors languageColors;
 
-      setUp(() async {
-        languageColors = await repository.loadLanguageColors();
-      });
+      setUp(() async => languageColors = await repository.loadLanguageColors());
 
       test(
         'Dartのカラーバリューは0xff00B4ABである',
         () => expect(languageColors['Dart'], equals(0xff00B4AB)),
       );
 
-      test(
-        'ASLのカラーバリューはnullである',
-        () => expect(languageColors['ASL'], isNull),
-      );
-    }),
-  );
+      test('ASLのカラーバリューはnullである', () => expect(languageColors['ASL'], isNull));
+    });
+  });
 }
