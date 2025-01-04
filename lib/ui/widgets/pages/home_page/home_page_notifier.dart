@@ -1,5 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:search_github_repositories/data/repositories/repository_repository/default_repository_repository.dart';
+import 'package:search_github_repositories/data/repositories/repository_repository.dart';
 import 'package:search_github_repositories/logic/models/order.dart';
 import 'package:search_github_repositories/logic/models/repository.dart';
 import 'package:search_github_repositories/logic/models/sort.dart';
@@ -11,7 +11,7 @@ part 'home_page_notifier.g.dart';
 class HomePageNotifier extends _$HomePageNotifier {
   HomePageNotifier();
 
-  final _repository = DefaultRepositoryRepository();
+  final _repository = RepositoryRepository();
 
   @override
   HomePageState build() => HomePageState();

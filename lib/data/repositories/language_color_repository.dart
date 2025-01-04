@@ -1,18 +1,16 @@
 import 'dart:convert';
 
-import 'package:search_github_repositories/data/repositories/language_color_repository/language_color_repository.dart';
 import 'package:search_github_repositories/data/services/language_color_service/default_language_color_service.dart';
 import 'package:search_github_repositories/data/services/language_color_service/language_color_service.dart';
 import 'package:search_github_repositories/util/types.dart';
 
-class DefaultLanguageColorRepository implements LanguageColorRepository {
-  DefaultLanguageColorRepository({
+class LanguageColorRepository {
+  LanguageColorRepository({
     LanguageColorService? service,
   }) : _service = service ?? DefaultLanguageColorService();
 
   final LanguageColorService _service;
 
-  @override
   Future<LanguageColors> loadLanguageColors() async {
     final response = await _service.getLanguageColors();
     final Json json = jsonDecode(response.data!);

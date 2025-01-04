@@ -2,9 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:search_github_repositories/data/services/language_color_service/language_color_service.dart';
 
 class DefaultLanguageColorService implements LanguageColorService {
-  DefaultLanguageColorService({Dio? dio}) : _dio = dio ?? Dio();
+  DefaultLanguageColorService();
 
-  final Dio _dio;
+  final _dio = Dio();
 
   @override
   Future<Response<String>> getLanguageColors() {
