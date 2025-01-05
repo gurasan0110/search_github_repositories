@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:search_github_repositories/ui/colors/language_colors/language_colors.dart';
+import 'package:search_github_repositories/ui/colors/language_colors.dart';
 
 class LanguageColorCircle extends ConsumerWidget {
   const LanguageColorCircle(this.name, {super.key});
