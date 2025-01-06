@@ -12,7 +12,9 @@ void main() {
     group('loadLanguageColors', () {
       late LanguageColors languageColors;
 
-      setUp(() async => languageColors = await repository.loadLanguageColors());
+      setUpAll(
+        () async => languageColors = await repository.loadLanguageColors(),
+      );
 
       test(
         'DartのcolorValueは0xff00B4ABである',
