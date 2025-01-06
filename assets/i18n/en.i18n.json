@@ -1,0 +1,14 @@
+{
+  "publicArchive": "Public archive",
+  "updatedOn": "Updated on $updatedAt",
+  "searchRepositories": "Search repositories",
+  "yourSearchDidNotMatchAnyRepositories": "Your search did not match any repositories",
+  "bestMatch": "Best match",
+  "mostStars": "Most stars",
+  "fewestStars": "Fewest stars",
+  "mostForks": "Most forks",
+  "fewestForks": "Fewest forks",
+  "recentlyUpdated": "Recently updated",
+  "leastRecentlyUpdated": "Least recently updated",
+  "updatedAtPattern": "MMM d, y"
+}

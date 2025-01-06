@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intersperse/intersperse.dart';
+import 'package:search_github_repositories/gen/strings.g.dart';
 import 'package:search_github_repositories/logic/models/repository.dart';
 import 'package:search_github_repositories/ui/colors/app_colors.dart';
 import 'package:search_github_repositories/ui/widgets/app_text.dart';
@@ -81,7 +82,7 @@ class RepositoryListTile extends StatelessWidget {
                       AppText(repository.stargazersCount),
                     ],
                   ),
-                  AppText('Updated on ${repository.updatedAt}'),
+                  AppText(t.updatedOn(updatedAt: repository.updatedAt)),
                 ].intersperse(AppText('・')).toList(),
               ),
             ),

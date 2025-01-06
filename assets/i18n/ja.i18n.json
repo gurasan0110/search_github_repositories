@@ -1,0 +1,14 @@
+{
+  "publicArchive": "公開アーカイブ",
+  "updatedOn": "$updatedAtに更新",
+  "searchRepositories": "リポジトリを検索",
+  "yourSearchDidNotMatchAnyRepositories": "検索結果はどのリポジトリにも一致しませんでした",
+  "bestMatch": "最適な一致",
+  "mostStars": "スター数が多い順",
+  "fewestStars": "スター数が少ない順",
+  "mostForks": "フォーク数が多い順",
+  "fewestForks": "フォーク数が少ない順",
+  "recentlyUpdated": "更新日時が新しい順",
+  "leastRecentlyUpdated": "更新日時が古い順",
+  "updatedAtPattern": "y年M月d日"
+}

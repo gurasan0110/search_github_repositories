@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:search_github_repositories/gen/strings.g.dart';
 import 'package:search_github_repositories/ui/widgets/pages/home_page/home_page_notifier.dart';
 import 'package:search_github_repositories/ui/widgets/pages/home_page/widgets/home_page_menu_anchor.dart';
 import 'package:search_github_repositories/util/extensions/listenable_extension.dart';
@@ -28,7 +29,7 @@ class HomePageSearchBar extends HookConsumerWidget
             child: SearchBar(
               controller: controller,
               focusNode: focusNode,
-              hintText: 'リポジトリを検索',
+              hintText: t.searchRepositories,
               leading: HomePageMenuAnchor(),
               trailing: [
                 IconButton(
