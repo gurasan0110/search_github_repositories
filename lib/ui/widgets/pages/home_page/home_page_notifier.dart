@@ -49,18 +49,23 @@ class HomePageNotifier extends _$HomePageNotifier {
   Future<void> _searchRepositories(int page) async {
     if (state.queryParameters.q.trim().isEmpty) return;
 
-    state = state.copyWith.queryParameters(page: page);
+    final queryParameters = state.queryParameters.copyWith(page: page);
 
     try {
       final pagination = await _repository.searchRepositories(
-        state.queryParameters.toJson(),
+        queryParameters.toJson(),
       );
 
-      final repositories = state.paginationState.pagination?.items;
+      final paginationState = state.paginationState;
+      final repositories = paginationState.pagination?.items;
       final oldItems = page == 1 ? <Repository>[] : repositories!;
       final items = oldItems + pagination.items;
       final newPagination = pagination.copyWith(items: items);
-      state = state.copyWith.paginationState(pagination: newPagination);
+
+      state = state.copyWith(
+        paginationState: paginationState.copyWith(pagination: newPagination),
+        queryParameters: queryParameters,
+      );
     } on Exception catch (exception) {
       state = state.copyWith.paginationState(exception: exception);
     }

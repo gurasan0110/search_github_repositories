@@ -48,7 +48,7 @@ class HomePageBody extends HookConsumerWidget {
 
     final controller = useScrollController()
       ..listen((controller) async {
-        if (controller.offset / controller.position.maxScrollExtent < .8) {
+        if (controller.offset / controller.position.maxScrollExtent < .9) {
           return;
         }
 
@@ -61,28 +61,28 @@ class HomePageBody extends HookConsumerWidget {
       onRefresh: ref
           .read(homePageNotifierProvider.notifier)
           .researchFirstPageRepositories,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 16,
-          children: [
-            AppText(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: 16,
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: AppText(
               t.results(totalCount: numberFormatter.format(totalCount)),
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
-            Expanded(
-              child: RepositoryListView(
-                repositories,
-                controller: controller,
-                lastItem: isLoadingNextPage
-                    ? Center(child: CircularProgressIndicator())
-                    : null,
-              ),
+          ),
+          Expanded(
+            child: RepositoryListView(
+              repositories,
+              controller: controller,
+              lastItem: isLoadingNextPage
+                  ? Center(child: CircularProgressIndicator())
+                  : null,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
