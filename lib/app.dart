@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:search_github_repositories/gen/strings.g.dart';
 import 'package:search_github_repositories/ui/widgets/pages/home_page/widgets/home_page.dart';
 
 class App extends StatelessWidget {
@@ -9,6 +11,9 @@ class App extends StatelessWidget {
     return MaterialApp(
       home: HomePage(),
       theme: ThemeData.dark(),
+      locale: TranslationProvider.of(context).flutterLocale,
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
+      supportedLocales: AppLocaleUtils.supportedLocales,
       debugShowCheckedModeBanner: false,
     );
   }

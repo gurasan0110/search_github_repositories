@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:search_github_repositories/gen/strings.g.dart';
 import 'package:search_github_repositories/logic/models/order.dart';
 import 'package:search_github_repositories/logic/models/sort.dart';
 import 'package:search_github_repositories/ui/widgets/app_text.dart';
@@ -27,13 +28,13 @@ class HomePageMenuAnchor extends ConsumerWidget {
                     ? Icon(Icons.check)
                     : null,
                 child: AppText(switch ((sort, order)) {
-                  (Sort.bestMatch, _) => 'Best match',
-                  (Sort.stars, Order.desc) => 'Most stars',
-                  (Sort.stars, Order.asc) => 'Fewest stars',
-                  (Sort.forks, Order.desc) => 'Most forks',
-                  (Sort.forks, Order.asc) => 'Fewest forks',
-                  (Sort.updated, Order.desc) => 'Recently updated',
-                  (Sort.updated, Order.asc) => 'Least recently updated',
+                  (Sort.bestMatch, _) => t.bestMatch,
+                  (Sort.stars, Order.desc) => t.mostStars,
+                  (Sort.stars, Order.asc) => t.fewestStars,
+                  (Sort.forks, Order.desc) => t.mostForks,
+                  (Sort.forks, Order.asc) => t.fewestForks,
+                  (Sort.updated, Order.desc) => t.recentlyUpdated,
+                  (Sort.updated, Order.asc) => t.leastRecentlyUpdated,
                 }),
               ),
       ],

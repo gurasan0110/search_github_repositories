@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:search_github_repositories/data/models/get_search_repositories_query_parameters.dart';
 import 'package:search_github_repositories/data/repositories/repository_repository.dart';
+import 'package:search_github_repositories/gen/strings.g.dart';
 import 'package:search_github_repositories/logic/models/owner_type.dart';
 import 'package:search_github_repositories/logic/models/pagination.dart';
 import 'package:search_github_repositories/logic/models/repository.dart';
@@ -13,10 +14,12 @@ void main() {
     final repository = RepositoryRepository(service: service);
 
     group('searchRepositories', () {
+      final queryParameters = const GetSearchRepositoriesQueryParameters();
+
       late Pagination<Repository> pagination;
 
-      setUp(() async {
-        final queryParameters = const GetSearchRepositoriesQueryParameters();
+      setUpAll(() async {
+        await LocaleSettings.setLocale(AppLocale.en);
         pagination = await repository.searchRepositories(queryParameters);
       });
 
@@ -61,10 +64,22 @@ void main() {
         ),
       );
 
-      test(
-        'updatedAtは2013年1月5日である',
-        () => expect(pagination.items[0].updatedAt, '2013年1月5日'),
-      );
+      group('updatedAt', () {
+        test(
+          '英語でJan 5, 2013である',
+          () => expect(pagination.items[0].updatedAt, 'Jan 5, 2013'),
+        );
+
+        test('日本語で2013年1月5日である', () async {
+          await LocaleSettings.setLocale(AppLocale.ja);
+
+          final pagination = await repository.searchRepositories(
+            queryParameters,
+          );
+
+          expect(pagination.items[0].updatedAt, '2013年1月5日');
+        });
+      });
 
       test(
         'stargazersCountはString型の1である',
