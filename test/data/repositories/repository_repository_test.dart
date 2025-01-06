@@ -1,7 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:search_github_repositories/data/models/get_search_repositories_query_parameters.dart';
 import 'package:search_github_repositories/data/repositories/repository_repository.dart';
-import 'package:search_github_repositories/gen/strings.g.dart';
 import 'package:search_github_repositories/logic/models/owner_type.dart';
 import 'package:search_github_repositories/logic/models/pagination.dart';
 import 'package:search_github_repositories/logic/models/repository.dart';
@@ -14,21 +12,15 @@ void main() {
     final repository = RepositoryRepository(service: service);
 
     group('searchRepositories', () {
-      final queryParameters = const GetSearchRepositoriesQueryParameters();
-
       late Pagination<Repository> pagination;
 
-      setUpAll(() async {
-        await LocaleSettings.setLocale(AppLocale.en);
-        pagination = await repository.searchRepositories(queryParameters);
-      });
+      setUpAll(
+        () async => pagination = await repository.searchRepositories({}),
+      );
 
       test('totalCountは40である', () => expect(pagination.totalCount, 40));
 
-      test(
-        'items.lengthは1である',
-        () => expect(pagination.items.length, 1),
-      );
+      test('items.lengthは1である', () => expect(pagination.items.length, 1));
 
       test(
         'fullNameはdtrupenn/Tetrisである',
@@ -64,26 +56,17 @@ void main() {
         ),
       );
 
-      group('updatedAt', () {
-        test(
-          '英語でJan 5, 2013である',
-          () => expect(pagination.items[0].updatedAt, 'Jan 5, 2013'),
-        );
-
-        test('日本語で2013年1月5日である', () async {
-          await LocaleSettings.setLocale(AppLocale.ja);
-
-          final pagination = await repository.searchRepositories(
-            queryParameters,
-          );
-
-          expect(pagination.items[0].updatedAt, '2013年1月5日');
-        });
-      });
+      test(
+        'updatedAtはDateTime型の2013-01-05T17:58:47Zである',
+        () => expect(
+          pagination.items[0].updatedAt,
+          DateTime.parse('2013-01-05T17:58:47Z'),
+        ),
+      );
 
       test(
-        'stargazersCountはString型の1である',
-        () => expect(pagination.items[0].stargazersCount, '1'),
+        'stargazersCountは1である',
+        () => expect(pagination.items[0].stargazersCount, 1),
       );
 
       test(

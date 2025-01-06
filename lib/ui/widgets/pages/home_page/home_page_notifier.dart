@@ -53,7 +53,7 @@ class HomePageNotifier extends _$HomePageNotifier {
 
     try {
       final pagination = await _repository.searchRepositories(
-        state.queryParameters,
+        state.queryParameters.toJson(),
       );
 
       final repositories = state.paginationState.pagination?.items;

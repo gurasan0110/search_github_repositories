@@ -3,6 +3,7 @@ import 'package:intersperse/intersperse.dart';
 import 'package:search_github_repositories/gen/strings.g.dart';
 import 'package:search_github_repositories/logic/models/repository.dart';
 import 'package:search_github_repositories/ui/colors/app_colors.dart';
+import 'package:search_github_repositories/ui/formatters.dart';
 import 'package:search_github_repositories/ui/widgets/app_text.dart';
 import 'package:search_github_repositories/ui/widgets/archive_label.dart';
 import 'package:search_github_repositories/ui/widgets/avatar.dart';
@@ -79,10 +80,14 @@ class RepositoryListTile extends StatelessWidget {
                         size: 16,
                         color: AppColors.listTileMuted,
                       ),
-                      AppText(repository.stargazersCount),
+                      AppText(numberFormatter.format(
+                        repository.stargazersCount,
+                      )),
                     ],
                   ),
-                  AppText(t.updatedOn(updatedAt: repository.updatedAt)),
+                  AppText(t.updatedOn(
+                    updatedAt: updatedAtFormatter.format(repository.updatedAt),
+                  )),
                 ].intersperse(AppText('・')).toList(),
               ),
             ),

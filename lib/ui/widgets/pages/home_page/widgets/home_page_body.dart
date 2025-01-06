@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:search_github_repositories/gen/strings.g.dart';
+import 'package:search_github_repositories/ui/formatters.dart';
+import 'package:search_github_repositories/ui/listenable_extension.dart';
 import 'package:search_github_repositories/ui/widgets/app_text.dart';
 import 'package:search_github_repositories/ui/widgets/pages/home_page/home_page_notifier.dart';
 import 'package:search_github_repositories/ui/widgets/repository_list/repository_list_view.dart';
-import 'package:search_github_repositories/util/extensions/listenable_extension.dart';
 
 class HomePageBody extends HookConsumerWidget {
   const HomePageBody({super.key});
@@ -36,9 +37,14 @@ class HomePageBody extends HookConsumerWidget {
       return Center(child: AppText(t.yourSearchDidNotMatchAnyRepositories));
     }
 
-    final isLoadingNextPage = ref.watch(homePageNotifierProvider.select(
-      (s) => s.paginationState.isLoadingNextPage,
-    ));
+    final (isLoadingNextPage, totalCount) = ref.watch(
+      homePageNotifierProvider.select(
+        (s) => (
+          s.paginationState.isLoadingNextPage,
+          s.paginationState.pagination!.totalCount,
+        ),
+      ),
+    );
 
     final controller = useScrollController()
       ..listen((controller) async {
@@ -55,12 +61,28 @@ class HomePageBody extends HookConsumerWidget {
       onRefresh: ref
           .read(homePageNotifierProvider.notifier)
           .researchFirstPageRepositories,
-      child: RepositoryListView(
-        repositories,
-        controller: controller,
-        lastItem: isLoadingNextPage
-            ? Center(child: CircularProgressIndicator())
-            : null,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 16,
+          children: [
+            AppText(
+              t.results(totalCount: numberFormatter.format(totalCount)),
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+            Expanded(
+              child: RepositoryListView(
+                repositories,
+                controller: controller,
+                lastItem: isLoadingNextPage
+                    ? Center(child: CircularProgressIndicator())
+                    : null,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

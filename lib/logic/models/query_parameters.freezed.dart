@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'get_search_repositories_query_parameters.dart';
+part of 'query_parameters.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,46 +15,42 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$GetSearchRepositoriesQueryParameters {
+mixin _$QueryParameters {
   String get q => throw _privateConstructorUsedError;
   Sort get sort => throw _privateConstructorUsedError;
   Order get order => throw _privateConstructorUsedError;
   int get page => throw _privateConstructorUsedError;
 
-  /// Serializes this GetSearchRepositoriesQueryParameters to a JSON map.
+  /// Serializes this QueryParameters to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of GetSearchRepositoriesQueryParameters
+  /// Create a copy of QueryParameters
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $GetSearchRepositoriesQueryParametersCopyWith<
-          GetSearchRepositoriesQueryParameters>
-      get copyWith => throw _privateConstructorUsedError;
+  $QueryParametersCopyWith<QueryParameters> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $GetSearchRepositoriesQueryParametersCopyWith<$Res> {
-  factory $GetSearchRepositoriesQueryParametersCopyWith(
-          GetSearchRepositoriesQueryParameters value,
-          $Res Function(GetSearchRepositoriesQueryParameters) then) =
-      _$GetSearchRepositoriesQueryParametersCopyWithImpl<$Res,
-          GetSearchRepositoriesQueryParameters>;
+abstract class $QueryParametersCopyWith<$Res> {
+  factory $QueryParametersCopyWith(
+          QueryParameters value, $Res Function(QueryParameters) then) =
+      _$QueryParametersCopyWithImpl<$Res, QueryParameters>;
   @useResult
   $Res call({String q, Sort sort, Order order, int page});
 }
 
 /// @nodoc
-class _$GetSearchRepositoriesQueryParametersCopyWithImpl<$Res,
-        $Val extends GetSearchRepositoriesQueryParameters>
-    implements $GetSearchRepositoriesQueryParametersCopyWith<$Res> {
-  _$GetSearchRepositoriesQueryParametersCopyWithImpl(this._value, this._then);
+class _$QueryParametersCopyWithImpl<$Res, $Val extends QueryParameters>
+    implements $QueryParametersCopyWith<$Res> {
+  _$QueryParametersCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of GetSearchRepositoriesQueryParameters
+  /// Create a copy of QueryParameters
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -86,28 +82,25 @@ class _$GetSearchRepositoriesQueryParametersCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$GetSearchRepositoriesQueryParametersImplCopyWith<$Res>
-    implements $GetSearchRepositoriesQueryParametersCopyWith<$Res> {
-  factory _$$GetSearchRepositoriesQueryParametersImplCopyWith(
-          _$GetSearchRepositoriesQueryParametersImpl value,
-          $Res Function(_$GetSearchRepositoriesQueryParametersImpl) then) =
-      __$$GetSearchRepositoriesQueryParametersImplCopyWithImpl<$Res>;
+abstract class _$$QueryParametersImplCopyWith<$Res>
+    implements $QueryParametersCopyWith<$Res> {
+  factory _$$QueryParametersImplCopyWith(_$QueryParametersImpl value,
+          $Res Function(_$QueryParametersImpl) then) =
+      __$$QueryParametersImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String q, Sort sort, Order order, int page});
 }
 
 /// @nodoc
-class __$$GetSearchRepositoriesQueryParametersImplCopyWithImpl<$Res>
-    extends _$GetSearchRepositoriesQueryParametersCopyWithImpl<$Res,
-        _$GetSearchRepositoriesQueryParametersImpl>
-    implements _$$GetSearchRepositoriesQueryParametersImplCopyWith<$Res> {
-  __$$GetSearchRepositoriesQueryParametersImplCopyWithImpl(
-      _$GetSearchRepositoriesQueryParametersImpl _value,
-      $Res Function(_$GetSearchRepositoriesQueryParametersImpl) _then)
+class __$$QueryParametersImplCopyWithImpl<$Res>
+    extends _$QueryParametersCopyWithImpl<$Res, _$QueryParametersImpl>
+    implements _$$QueryParametersImplCopyWith<$Res> {
+  __$$QueryParametersImplCopyWithImpl(
+      _$QueryParametersImpl _value, $Res Function(_$QueryParametersImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of GetSearchRepositoriesQueryParameters
+  /// Create a copy of QueryParameters
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -117,7 +110,7 @@ class __$$GetSearchRepositoriesQueryParametersImplCopyWithImpl<$Res>
     Object? order = null,
     Object? page = null,
   }) {
-    return _then(_$GetSearchRepositoriesQueryParametersImpl(
+    return _then(_$QueryParametersImpl(
       q: null == q
           ? _value.q
           : q // ignore: cast_nullable_to_non_nullable
@@ -140,9 +133,8 @@ class __$$GetSearchRepositoriesQueryParametersImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable(createFactory: false)
-class _$GetSearchRepositoriesQueryParametersImpl
-    implements _GetSearchRepositoriesQueryParameters {
-  const _$GetSearchRepositoriesQueryParametersImpl(
+class _$QueryParametersImpl implements _QueryParameters {
+  const _$QueryParametersImpl(
       {this.q = '',
       this.sort = Sort.bestMatch,
       this.order = Order.desc,
@@ -163,14 +155,14 @@ class _$GetSearchRepositoriesQueryParametersImpl
 
   @override
   String toString() {
-    return 'GetSearchRepositoriesQueryParameters(q: $q, sort: $sort, order: $order, page: $page)';
+    return 'QueryParameters(q: $q, sort: $sort, order: $order, page: $page)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetSearchRepositoriesQueryParametersImpl &&
+            other is _$QueryParametersImpl &&
             (identical(other.q, q) || other.q == q) &&
             (identical(other.sort, sort) || other.sort == sort) &&
             (identical(other.order, order) || other.order == order) &&
@@ -181,31 +173,29 @@ class _$GetSearchRepositoriesQueryParametersImpl
   @override
   int get hashCode => Object.hash(runtimeType, q, sort, order, page);
 
-  /// Create a copy of GetSearchRepositoriesQueryParameters
+  /// Create a copy of QueryParameters
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetSearchRepositoriesQueryParametersImplCopyWith<
-          _$GetSearchRepositoriesQueryParametersImpl>
-      get copyWith => __$$GetSearchRepositoriesQueryParametersImplCopyWithImpl<
-          _$GetSearchRepositoriesQueryParametersImpl>(this, _$identity);
+  _$$QueryParametersImplCopyWith<_$QueryParametersImpl> get copyWith =>
+      __$$QueryParametersImplCopyWithImpl<_$QueryParametersImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetSearchRepositoriesQueryParametersImplToJson(
+    return _$$QueryParametersImplToJson(
       this,
     );
   }
 }
 
-abstract class _GetSearchRepositoriesQueryParameters
-    implements GetSearchRepositoriesQueryParameters {
-  const factory _GetSearchRepositoriesQueryParameters(
+abstract class _QueryParameters implements QueryParameters {
+  const factory _QueryParameters(
       {final String q,
       final Sort sort,
       final Order order,
-      final int page}) = _$GetSearchRepositoriesQueryParametersImpl;
+      final int page}) = _$QueryParametersImpl;
 
   @override
   String get q;
@@ -216,11 +206,10 @@ abstract class _GetSearchRepositoriesQueryParameters
   @override
   int get page;
 
-  /// Create a copy of GetSearchRepositoriesQueryParameters
+  /// Create a copy of QueryParameters
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$GetSearchRepositoriesQueryParametersImplCopyWith<
-          _$GetSearchRepositoriesQueryParametersImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$QueryParametersImplCopyWith<_$QueryParametersImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

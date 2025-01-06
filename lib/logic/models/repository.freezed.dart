@@ -24,10 +24,8 @@ mixin _$Repository {
   Owner? get owner => throw _privateConstructorUsedError;
   Uri get htmlUrl => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  @UpdatedAtConverter()
-  String get updatedAt => throw _privateConstructorUsedError;
-  @StargazersCountConverter()
-  String get stargazersCount => throw _privateConstructorUsedError;
+  DateTime get updatedAt => throw _privateConstructorUsedError;
+  int get stargazersCount => throw _privateConstructorUsedError;
   String? get language => throw _privateConstructorUsedError;
   bool get archived => throw _privateConstructorUsedError;
 
@@ -52,8 +50,8 @@ abstract class $RepositoryCopyWith<$Res> {
       Owner? owner,
       Uri htmlUrl,
       String? description,
-      @UpdatedAtConverter() String updatedAt,
-      @StargazersCountConverter() String stargazersCount,
+      DateTime updatedAt,
+      int stargazersCount,
       String? language,
       bool archived});
 
@@ -104,11 +102,11 @@ class _$RepositoryCopyWithImpl<$Res, $Val extends Repository>
       updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       stargazersCount: null == stargazersCount
           ? _value.stargazersCount
           : stargazersCount // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       language: freezed == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
@@ -148,8 +146,8 @@ abstract class _$$RepositoryImplCopyWith<$Res>
       Owner? owner,
       Uri htmlUrl,
       String? description,
-      @UpdatedAtConverter() String updatedAt,
-      @StargazersCountConverter() String stargazersCount,
+      DateTime updatedAt,
+      int stargazersCount,
       String? language,
       bool archived});
 
@@ -199,11 +197,11 @@ class __$$RepositoryImplCopyWithImpl<$Res>
       updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       stargazersCount: null == stargazersCount
           ? _value.stargazersCount
           : stargazersCount // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       language: freezed == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
@@ -224,8 +222,8 @@ class _$RepositoryImpl implements _Repository {
       this.owner,
       required this.htmlUrl,
       this.description,
-      @UpdatedAtConverter() required this.updatedAt,
-      @StargazersCountConverter() required this.stargazersCount,
+      required this.updatedAt,
+      required this.stargazersCount,
       this.language,
       required this.archived});
 
@@ -241,11 +239,9 @@ class _$RepositoryImpl implements _Repository {
   @override
   final String? description;
   @override
-  @UpdatedAtConverter()
-  final String updatedAt;
+  final DateTime updatedAt;
   @override
-  @StargazersCountConverter()
-  final String stargazersCount;
+  final int stargazersCount;
   @override
   final String? language;
   @override
@@ -304,8 +300,8 @@ abstract class _Repository implements Repository {
       final Owner? owner,
       required final Uri htmlUrl,
       final String? description,
-      @UpdatedAtConverter() required final String updatedAt,
-      @StargazersCountConverter() required final String stargazersCount,
+      required final DateTime updatedAt,
+      required final int stargazersCount,
       final String? language,
       required final bool archived}) = _$RepositoryImpl;
 
@@ -321,11 +317,9 @@ abstract class _Repository implements Repository {
   @override
   String? get description;
   @override
-  @UpdatedAtConverter()
-  String get updatedAt;
+  DateTime get updatedAt;
   @override
-  @StargazersCountConverter()
-  String get stargazersCount;
+  int get stargazersCount;
   @override
   String? get language;
   @override

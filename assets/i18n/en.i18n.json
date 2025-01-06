@@ -10,5 +10,6 @@
   "fewestForks": "Fewest forks",
   "recentlyUpdated": "Recently updated",
   "leastRecentlyUpdated": "Least recently updated",
-  "updatedAtPattern": "MMM d, y"
+  "updatedAtPattern": "MMM d, y",
+  "results": "$totalCount results"
 }

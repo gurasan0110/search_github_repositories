@@ -49,6 +49,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get recentlyUpdated => 'Recently updated';
 	String get leastRecentlyUpdated => 'Least recently updated';
 	String get updatedAtPattern => 'MMM d, y';
+	String results({required Object totalCount}) => '${totalCount} results';
 }
 
 /// Flat map(s) containing all translations.
@@ -68,6 +69,7 @@ extension on Translations {
 			case 'recentlyUpdated': return 'Recently updated';
 			case 'leastRecentlyUpdated': return 'Least recently updated';
 			case 'updatedAtPattern': return 'MMM d, y';
+			case 'results': return ({required Object totalCount}) => '${totalCount} results';
 			default: return null;
 		}
 	}

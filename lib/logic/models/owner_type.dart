@@ -1,8 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-enum OwnerType {
-  @JsonValue('User')
-  user,
-  @JsonValue('Organization')
-  organization,
-}
+@JsonEnum(fieldRename: FieldRename.pascal)
+enum OwnerType { user, organization }

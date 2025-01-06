@@ -10,5 +10,6 @@
   "fewestForks": "フォーク数が少ない順",
   "recentlyUpdated": "更新日時が新しい順",
   "leastRecentlyUpdated": "更新日時が古い順",
-  "updatedAtPattern": "y年M月d日"
+  "updatedAtPattern": "y年M月d日",
+  "results": "$totalCountの結果"
 }

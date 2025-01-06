@@ -45,6 +45,7 @@ class TranslationsJa implements Translations {
 	@override String get recentlyUpdated => '更新日時が新しい順';
 	@override String get leastRecentlyUpdated => '更新日時が古い順';
 	@override String get updatedAtPattern => 'y年M月d日';
+	@override String results({required Object totalCount}) => '${totalCount}の結果';
 }
 
 /// Flat map(s) containing all translations.
@@ -64,6 +65,7 @@ extension on TranslationsJa {
 			case 'recentlyUpdated': return '更新日時が新しい順';
 			case 'leastRecentlyUpdated': return '更新日時が古い順';
 			case 'updatedAtPattern': return 'y年M月d日';
+			case 'results': return ({required Object totalCount}) => '${totalCount}の結果';
 			default: return null;
 		}
 	}
