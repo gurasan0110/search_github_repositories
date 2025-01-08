@@ -1,17 +1,47 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:search_github_repositories/data/repositories/repository_repository.dart';
-import 'package:search_github_repositories/logic/models/owner_type.dart';
-import 'package:search_github_repositories/logic/models/pagination.dart';
-import 'package:search_github_repositories/logic/models/repository.dart';
+import 'package:mockito/mockito.dart';
+import 'package:search_github_repositories/data/repositories/repository_repository/default_repository_repository.dart';
+import 'package:search_github_repositories/domain/models/owner_type.dart';
+import 'package:search_github_repositories/domain/models/pagination.dart';
+import 'package:search_github_repositories/domain/models/repository.dart';
 
-import '../../../testing/data/services/fake_repository_service.dart';
+import '../dio.mocks.dart';
 
 void main() {
-  group('RepositoryRepository', () {
-    final service = const FakeRepositoryService();
-    final repository = RepositoryRepository(service: service);
+  group('DefaultRepositoryRepository', () {
+    final dio = MockDio();
+    final repository = DefaultRepositoryRepository(dio: dio);
 
     group('searchRepositories', () {
+      const data = {
+        'total_count': 40,
+        'items': [
+          {
+            'full_name': 'dtrupenn/Tetris',
+            'owner': {
+              'avatar_url':
+                  'https://secure.gravatar.com/avatar/e7956084e75f239de85d3a31bc172ace?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png',
+              'type': 'User',
+            },
+            'html_url': 'https://github.com/dtrupenn/Tetris',
+            'description':
+                'A C implementation of Tetris using Pennsim through LC4',
+            'updated_at': '2013-01-05T17:58:47Z',
+            'stargazers_count': 1,
+            'language': 'Assembly',
+            'archived': true,
+          },
+        ],
+      };
+
+      when(dio.get('/search/repositories', queryParameters: {})).thenAnswer(
+        (_) => Future.value(Response(
+          data: data,
+          requestOptions: RequestOptions(),
+        )),
+      );
+
       late Pagination<Repository> pagination;
 
       setUpAll(

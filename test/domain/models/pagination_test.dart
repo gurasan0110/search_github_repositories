@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:search_github_repositories/logic/models/pagination.dart';
+import 'package:search_github_repositories/domain/models/pagination.dart';
 
 void main() {
   group(
