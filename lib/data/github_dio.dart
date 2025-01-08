@@ -11,7 +11,5 @@ class GitHubDio with DioMixin implements Dio {
   }
 
   @override
-  HttpClientAdapter get httpClientAdapter {
-    return HttpClientAdapter();
-  }
+  HttpClientAdapter get httpClientAdapter => HttpClientAdapter();
 }
