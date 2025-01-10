@@ -4,8 +4,8 @@ import 'package:search_github_repositories/domain/models/sort.dart';
 import 'package:search_github_repositories/gen/strings.g.dart';
 import 'package:search_github_repositories/presentation/widgets/app_text.dart';
 
-class HomePageMenuAnchor extends StatelessWidget {
-  const HomePageMenuAnchor({
+class SortAndOrderFilter extends StatelessWidget {
+  const SortAndOrderFilter({
     super.key,
     required this.onPressed,
     required this.isChecked,

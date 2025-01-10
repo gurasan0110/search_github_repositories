@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:search_github_repositories/gen/strings.g.dart';
-import 'package:search_github_repositories/presentation/widgets/app_text.dart';
 import 'package:search_github_repositories/presentation/widgets/pages/home_page/home_page_controller.dart';
-import 'package:search_github_repositories/presentation/widgets/pages/home_page/widgets/home_page_menu_anchor.dart';
+import 'package:search_github_repositories/presentation/widgets/search_history_list/search_history_list_view.dart';
+import 'package:search_github_repositories/presentation/widgets/sort_and_order_filter.dart';
 
 class HomePageSearchAnchor extends HookConsumerWidget
     implements PreferredSizeWidget {
@@ -28,31 +28,17 @@ class HomePageSearchAnchor extends HookConsumerWidget
             (s) => s.searchHistories,
           ));
 
-          return ListView.builder(
-            padding: EdgeInsets.only(
-              bottom: MediaQuery.of(context).viewInsets.bottom,
-            ),
-            itemBuilder: (context, index) {
-              final searchHistory = searchHistories[index];
-
-              return ListTile(
-                title: AppText(searchHistory.q, maxLines: 2),
-                trailing: IconButton(
-                  onPressed: () => ref
-                      .read(homePageControllerProvider.notifier)
-                      .delete(searchHistory.id),
-                  icon: Icon(Icons.delete),
-                ),
-                contentPadding: EdgeInsets.symmetric(horizontal: 16),
-                onTap: () async {
-                  searchController.text = searchHistory.q;
-                  await ref
-                      .read(homePageControllerProvider.notifier)
-                      .listen(searchHistory.q);
-                },
-              );
+          return SearchHistoryListView(
+            searchHistories,
+            onTap: (searchHistory) async {
+              searchController.text = searchHistory.q;
+              await ref
+                  .read(homePageControllerProvider.notifier)
+                  .listen(searchHistory.q);
             },
-            itemCount: searchHistories.length,
+            onPressedDeleteButton: (id) async {
+              await ref.read(homePageControllerProvider.notifier).delete(id);
+            },
           );
         }),
         viewLeading: IconButton(
@@ -78,7 +64,7 @@ class HomePageSearchAnchor extends HookConsumerWidget
               ),
             );
 
-            return HomePageMenuAnchor(
+            return SortAndOrderFilter(
               onPressed: (sort, order) => ref
                   .read(homePageControllerProvider.notifier)
                   .setTempSortAndOrder(sort: sort, order: order),
@@ -113,7 +99,7 @@ class HomePageSearchAnchor extends HookConsumerWidget
                 }),
               );
 
-              return HomePageMenuAnchor(
+              return SortAndOrderFilter(
                 onPressed: (sort, order) => ref
                     .read(homePageControllerProvider.notifier)
                     .setSortAndOrder(sort: sort, order: order),
