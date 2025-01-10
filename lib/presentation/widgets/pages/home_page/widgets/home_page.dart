@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:search_github_repositories/presentation/widgets/logo.dart';
 import 'package:search_github_repositories/presentation/widgets/pages/home_page/widgets/home_page_body.dart';
-import 'package:search_github_repositories/presentation/widgets/pages/home_page/widgets/home_page_search_bar.dart';
+import 'package:search_github_repositories/presentation/widgets/pages/home_page/widgets/home_page_search_anchor.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Logo(),
-        bottom: HomePageSearchBar(),
+        bottom: HomePageSearchAnchor(),
         centerTitle: true,
         forceMaterialTransparency: true,
       ),

@@ -46,16 +46,14 @@ class HomePageBody extends HookConsumerWidget {
       ),
     );
 
-    final controller = useScrollController()
-      ..listen((controller) async {
-        if (controller.offset / controller.position.maxScrollExtent < .9) {
-          return;
-        }
+    final controller = useScrollController();
 
-        await ref
-            .read(homePageControllerProvider.notifier)
-            .searchNextPageRepositories();
-      });
+    controller.listen(() async {
+      if (controller.offset / controller.position.maxScrollExtent < .9) return;
+      await ref
+          .read(homePageControllerProvider.notifier)
+          .searchNextPageRepositories();
+    });
 
     return RefreshIndicator(
       onRefresh: ref

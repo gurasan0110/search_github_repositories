@@ -19,6 +19,9 @@ mixin _$HomePageState {
   QueryParameters get queryParameters => throw _privateConstructorUsedError;
   PaginationState<Repository> get paginationState =>
       throw _privateConstructorUsedError;
+  List<SearchHistory> get searchHistories => throw _privateConstructorUsedError;
+  Sort get tempSort => throw _privateConstructorUsedError;
+  Order get tempOrder => throw _privateConstructorUsedError;
 
   /// Create a copy of HomePageState
   /// with the given fields replaced by the non-null parameter values.
@@ -35,7 +38,10 @@ abstract class $HomePageStateCopyWith<$Res> {
   @useResult
   $Res call(
       {QueryParameters queryParameters,
-      PaginationState<Repository> paginationState});
+      PaginationState<Repository> paginationState,
+      List<SearchHistory> searchHistories,
+      Sort tempSort,
+      Order tempOrder});
 
   $QueryParametersCopyWith<$Res> get queryParameters;
   $PaginationStateCopyWith<Repository, $Res> get paginationState;
@@ -58,6 +64,9 @@ class _$HomePageStateCopyWithImpl<$Res, $Val extends HomePageState>
   $Res call({
     Object? queryParameters = null,
     Object? paginationState = null,
+    Object? searchHistories = null,
+    Object? tempSort = null,
+    Object? tempOrder = null,
   }) {
     return _then(_value.copyWith(
       queryParameters: null == queryParameters
@@ -68,6 +77,18 @@ class _$HomePageStateCopyWithImpl<$Res, $Val extends HomePageState>
           ? _value.paginationState
           : paginationState // ignore: cast_nullable_to_non_nullable
               as PaginationState<Repository>,
+      searchHistories: null == searchHistories
+          ? _value.searchHistories
+          : searchHistories // ignore: cast_nullable_to_non_nullable
+              as List<SearchHistory>,
+      tempSort: null == tempSort
+          ? _value.tempSort
+          : tempSort // ignore: cast_nullable_to_non_nullable
+              as Sort,
+      tempOrder: null == tempOrder
+          ? _value.tempOrder
+          : tempOrder // ignore: cast_nullable_to_non_nullable
+              as Order,
     ) as $Val);
   }
 
@@ -103,7 +124,10 @@ abstract class _$$HomePageStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {QueryParameters queryParameters,
-      PaginationState<Repository> paginationState});
+      PaginationState<Repository> paginationState,
+      List<SearchHistory> searchHistories,
+      Sort tempSort,
+      Order tempOrder});
 
   @override
   $QueryParametersCopyWith<$Res> get queryParameters;
@@ -126,6 +150,9 @@ class __$$HomePageStateImplCopyWithImpl<$Res>
   $Res call({
     Object? queryParameters = null,
     Object? paginationState = null,
+    Object? searchHistories = null,
+    Object? tempSort = null,
+    Object? tempOrder = null,
   }) {
     return _then(_$HomePageStateImpl(
       queryParameters: null == queryParameters
@@ -136,6 +163,18 @@ class __$$HomePageStateImplCopyWithImpl<$Res>
           ? _value.paginationState
           : paginationState // ignore: cast_nullable_to_non_nullable
               as PaginationState<Repository>,
+      searchHistories: null == searchHistories
+          ? _value._searchHistories
+          : searchHistories // ignore: cast_nullable_to_non_nullable
+              as List<SearchHistory>,
+      tempSort: null == tempSort
+          ? _value.tempSort
+          : tempSort // ignore: cast_nullable_to_non_nullable
+              as Sort,
+      tempOrder: null == tempOrder
+          ? _value.tempOrder
+          : tempOrder // ignore: cast_nullable_to_non_nullable
+              as Order,
     ));
   }
 }
@@ -145,7 +184,11 @@ class __$$HomePageStateImplCopyWithImpl<$Res>
 class _$HomePageStateImpl implements _HomePageState {
   const _$HomePageStateImpl(
       {this.queryParameters = const QueryParameters(),
-      this.paginationState = const PaginationState<Repository>()});
+      this.paginationState = const PaginationState<Repository>(),
+      final List<SearchHistory> searchHistories = const [],
+      this.tempSort = Sort.bestMatch,
+      this.tempOrder = Order.desc})
+      : _searchHistories = searchHistories;
 
   @override
   @JsonKey()
@@ -153,10 +196,25 @@ class _$HomePageStateImpl implements _HomePageState {
   @override
   @JsonKey()
   final PaginationState<Repository> paginationState;
+  final List<SearchHistory> _searchHistories;
+  @override
+  @JsonKey()
+  List<SearchHistory> get searchHistories {
+    if (_searchHistories is EqualUnmodifiableListView) return _searchHistories;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_searchHistories);
+  }
+
+  @override
+  @JsonKey()
+  final Sort tempSort;
+  @override
+  @JsonKey()
+  final Order tempOrder;
 
   @override
   String toString() {
-    return 'HomePageState(queryParameters: $queryParameters, paginationState: $paginationState)';
+    return 'HomePageState(queryParameters: $queryParameters, paginationState: $paginationState, searchHistories: $searchHistories, tempSort: $tempSort, tempOrder: $tempOrder)';
   }
 
   @override
@@ -167,12 +225,23 @@ class _$HomePageStateImpl implements _HomePageState {
             (identical(other.queryParameters, queryParameters) ||
                 other.queryParameters == queryParameters) &&
             (identical(other.paginationState, paginationState) ||
-                other.paginationState == paginationState));
+                other.paginationState == paginationState) &&
+            const DeepCollectionEquality()
+                .equals(other._searchHistories, _searchHistories) &&
+            (identical(other.tempSort, tempSort) ||
+                other.tempSort == tempSort) &&
+            (identical(other.tempOrder, tempOrder) ||
+                other.tempOrder == tempOrder));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, queryParameters, paginationState);
+  int get hashCode => Object.hash(
+      runtimeType,
+      queryParameters,
+      paginationState,
+      const DeepCollectionEquality().hash(_searchHistories),
+      tempSort,
+      tempOrder);
 
   /// Create a copy of HomePageState
   /// with the given fields replaced by the non-null parameter values.
@@ -186,12 +255,21 @@ class _$HomePageStateImpl implements _HomePageState {
 abstract class _HomePageState implements HomePageState {
   const factory _HomePageState(
       {final QueryParameters queryParameters,
-      final PaginationState<Repository> paginationState}) = _$HomePageStateImpl;
+      final PaginationState<Repository> paginationState,
+      final List<SearchHistory> searchHistories,
+      final Sort tempSort,
+      final Order tempOrder}) = _$HomePageStateImpl;
 
   @override
   QueryParameters get queryParameters;
   @override
   PaginationState<Repository> get paginationState;
+  @override
+  List<SearchHistory> get searchHistories;
+  @override
+  Sort get tempSort;
+  @override
+  Order get tempOrder;
 
   /// Create a copy of HomePageState
   /// with the given fields replaced by the non-null parameter values.
