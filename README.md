@@ -1,4 +1,6 @@
-![ci.yml](https://github.com/gurasan0110/search_github_repositories/actions/workflows/ci.yml/badge.svg)
+![analyze.yml](https://github.com/gurasan0110/search_github_repositories/actions/workflows/analyze.yml/badge.svg)
+
+![test.yml](https://github.com/gurasan0110/search_github_repositories/actions/workflows/test.yml/badge.svg)
 
 # GitHubのリポジトリを検索するアプリ
 
