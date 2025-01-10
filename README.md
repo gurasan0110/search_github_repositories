@@ -1,5 +1,6 @@
 ![analyze.yml](https://github.com/gurasan0110/search_github_repositories/actions/workflows/analyze.yml/badge.svg)
 ![test.yml](https://github.com/gurasan0110/search_github_repositories/actions/workflows/test.yml/badge.svg)
+![dependabot.yml](https://github.com/gurasan0110/search_github_repositories/actions/workflows/dependabot/dependabot-updates/badge.svg)
 
 # GitHubのリポジトリを検索するアプリ
 
