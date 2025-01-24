@@ -1,5 +1,5 @@
 name: search_github_repositories
-description: "A new Flutter project."
+description: GitHubのリポジトリを検索するアプリ
 publish_to: 'none'
 version: 0.1.0
 
