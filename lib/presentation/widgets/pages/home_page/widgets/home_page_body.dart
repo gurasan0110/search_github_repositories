@@ -50,9 +50,9 @@ class HomePageBody extends HookConsumerWidget {
 
     controller.listen(() async {
       if (controller.offset / controller.position.maxScrollExtent < .9) return;
-      await ref
-          .read(homePageControllerProvider.notifier)
-          .searchNextPageRepositories();
+      // await ref
+      //     .read(homePageControllerProvider.notifier)
+      //     .searchNextPageRepositories();
     });
 
     return RefreshIndicator(
@@ -63,8 +63,9 @@ class HomePageBody extends HookConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 16,
         children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+          SafeArea(
+            bottom: false,
+            minimum: EdgeInsets.symmetric(horizontal: 16),
             child: AppText(
               t.results(totalCount: Formatters.number.format(totalCount)),
               fontSize: 18,
