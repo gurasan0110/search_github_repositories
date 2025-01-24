@@ -1,6 +1,6 @@
 ![analyze.yml](https://github.com/gurasan0110/search_github_repositories/actions/workflows/analyze.yml/badge.svg)
-
 ![test.yml](https://github.com/gurasan0110/search_github_repositories/actions/workflows/test.yml/badge.svg)
+![dependabot.yml](https://github.com/gurasan0110/search_github_repositories/actions/workflows/dependabot/dependabot-updates/badge.svg)
 
 # GitHubのリポジトリを検索するアプリ
 
@@ -49,7 +49,7 @@ fvm flutter run
 
 削除ボタンを押すと履歴を削除します。
 
-入力中のキーワードを含む履歴だけを表示します。
+入力中のキーワードを含み、不等な履歴だけを表示します。
 
 履歴を押すとその履歴のキーワードが入力されます。
 
@@ -57,7 +57,7 @@ fvm flutter run
 
 #### 無限スクロール
 
-リポジトリリストの9割を下にスクロールすると次のページのリポジトリが読み込まれます。
+リポジトリリストを下に９割スクロールすると次のページのリポジトリが読み込まれます。
 
 ### 多言語対応
 
