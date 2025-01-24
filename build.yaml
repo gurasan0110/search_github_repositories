@@ -4,3 +4,8 @@ targets:
       json_serializable:
         options:
           field_rename: snake
+      flutter_gen:
+        options:
+          assets:
+            exclude:
+              - assets/images/logo_with_background.png
